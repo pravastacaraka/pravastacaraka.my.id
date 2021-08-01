@@ -15,6 +15,6 @@ $ npm install # or yarn
 $ npm run dev # or yarn dev
 ```
 
-## Question / Feedback?
+## Question or feedback
 
 Do you have questions or feedback? Then the reach out to me on on [Facebook](https://facebook.com/pravastacaraka), [Twitter](https://twitter.com/pravastacaraka), or [LinkedIn](https://www.linkedin.com/in/pravastacaraka).
