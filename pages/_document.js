@@ -16,7 +16,6 @@ class MyDocument extends Document {
           <link href="/static/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link href="/static/favicon/site.webmanifest" rel="manifest" />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
           <meta content="#3182CE" name="theme-color" />
           <meta content="#3182CE" name="msapplication-TileColor" />
           <meta content="/static/favicon/browserconfig.xml" name="msapplication-config" />
