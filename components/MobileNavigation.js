@@ -1,3 +1,4 @@
+import { MENU_LINKS } from "@app-config/app.config";
 import {
   Box,
   Button,
@@ -18,21 +19,6 @@ import Link from "next/link";
 import { HiHome, HiOutlineMenuAlt1 } from "react-icons/hi";
 import { NavButton, ThemeToggle } from "./Button";
 
-const MENU_LINKS = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "About",
-    path: "/about",
-  },
-  {
-    title: "Blog",
-    path: "/blog",
-  },
-];
-
 function MobileNavigation() {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const MotionBox = motion(Box);
@@ -51,9 +37,9 @@ function MobileNavigation() {
         templateColumns="repeat(3, 1fr)"
         align="center"
         py={2}
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("white", "black")}
         borderTopWidth="2px"
-        borderTopColor={useColorModeValue("gray.100", "gray.700")}
+        borderTopColor={useColorModeValue("gray.100", "gray.800")}
         shadow="0 -2px 10px 0 rgba(0, 0, 0, 0.035)"
       >
         <NavButton label="Home" icon={HiHome} />
@@ -87,7 +73,7 @@ function MenuToggle() {
                     if (path === pathname) isActive = true;
                   }
                   return (
-                    <Link href={path}>
+                    <Link href={path} key={title}>
                       <Button
                         w="full"
                         size="lg"
