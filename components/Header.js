@@ -1,26 +1,24 @@
 import { MENU_LINKS } from "@app-config/app.config";
-import { Avatar, Button, Flex, HStack, useColorModeValue } from "@chakra-ui/react";
+import { Avatar, Container, HStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { ThemeToggle } from "./Button";
 
-function NavLink({ title, path, isActive }) {
+function HeaderLink({ name, href, isActive }) {
   return (
-    <Link href={path}>
-      <Button
-        aria-current={isActive ? "page" : undefined}
-        variant="ghost"
+    <Link href={href} passHref>
+      <Text
+        as="a"
         px={4}
-        size="md"
         color="gray.500"
-        transition="color 0.2s ease-out"
-        _hover={{ color: useColorModeValue("gray.800", "gray.200") }}
+        _hover={{ color: "gray.600" }}
+        aria-current={isActive ? "page" : undefined}
         _activeLink={{
-          color: useColorModeValue("gray.800", "gray.200"),
+          color: useColorModeValue("gray.900", "gray.100"),
         }}
       >
-        {title}
-      </Button>
+        {name}
+      </Text>
     </Link>
   );
 }
@@ -30,13 +28,10 @@ function Header() {
   let isActive = false;
 
   return (
-    <Flex
+    <Container
       as="nav"
-      w="full"
+      d={{ base: "none", md: "block" }}
       my={{ base: 6, md: 8 }}
-      d={{ base: "none", md: "flex" }}
-      color={useColorModeValue("gray.900", "gray.100")}
-      // bg={useColorModeValue("white", "black")}
       position="sticky"
       top={0}
       zIndex={10}
@@ -44,7 +39,7 @@ function Header() {
       transition="background-color 0.2s ease-in-out"
       opacity={60}
     >
-      <Flex alignItems="center" justifyContent="space-between" w="full" maxW="4xl" p={8} mx="auto">
+      <HStack justify="space-between" w="full" py={8}>
         <Link href="/">
           <Avatar name="Pravasta Caraka" size="sm" cursor="pointer" />
         </Link>
@@ -56,12 +51,12 @@ function Header() {
             } else {
               if (path === pathname) isActive = true;
             }
-            return <NavLink title={title} path={path} isActive={isActive} key={title} />;
+            return <HeaderLink href={path} name={title} isActive={isActive} key={title} />;
           })}
         </HStack>
         <ThemeToggle />
-      </Flex>
-    </Flex>
+      </HStack>
+    </Container>
   );
 }
 
