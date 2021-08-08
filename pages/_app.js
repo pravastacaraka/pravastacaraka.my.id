@@ -1,3 +1,4 @@
+import Footer from "@app-components/Footer";
 import Header from "@app-components/Header";
 import MobileNavigation from "@app-components/MobileNavigation";
 import customTheme from "@app-themes/default.theme";
@@ -11,10 +12,11 @@ function MyApp({ Component, pageProps }) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <Header />
-      <Box as="main" pt={{ base: 16, md: 32 }} pb={{ base: 24, md: 16 }} minH="100vh">
+      <Box as="main" pt={{ base: 16, md: 32 }} pb={{ base: 24, md: 16 }}>
         <Component {...pageProps} />
       </Box>
       <MobileNavigation />
+      <Footer />
     </ChakraProvider>
   );
 }
