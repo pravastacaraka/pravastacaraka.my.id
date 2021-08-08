@@ -1,12 +1,12 @@
 import Header from "@app-components/Header";
 import MobileNavigation from "@app-components/MobileNavigation";
+import customTheme from "@app-themes/default.theme";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
-import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>

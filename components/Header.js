@@ -12,7 +12,7 @@ function NavLink({ title, path, isActive }) {
         variant="ghost"
         px={4}
         size="md"
-        color={useColorModeValue("gray.400", "gray.500")}
+        color="gray.500"
         transition="color 0.2s ease-out"
         _hover={{ color: useColorModeValue("gray.800", "gray.200") }}
         _activeLink={{
@@ -36,7 +36,7 @@ function Header() {
       my={{ base: 6, md: 8 }}
       d={{ base: "none", md: "flex" }}
       color={useColorModeValue("gray.900", "gray.100")}
-      bg={useColorModeValue("white", "black")}
+      // bg={useColorModeValue("white", "black")}
       position="sticky"
       top={0}
       zIndex={10}
