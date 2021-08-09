@@ -4,6 +4,7 @@ import { Box, Grid, useColorModeValue } from "@chakra-ui/react";
 import { motion, useCycle } from "framer-motion";
 import { HiHome } from "react-icons/hi";
 import { ThemeToggle } from "./Button";
+import { MENU_LINKS } from "@app-config/app.config";
 
 function MobileNavigation() {
   const [isOpen, toggleOpen] = useCycle(false, true);
