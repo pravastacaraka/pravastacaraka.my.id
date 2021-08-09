@@ -1,8 +1,8 @@
+import { ThemeToggle } from "@app-components/Button";
 import { MENU_LINKS } from "@app-config/app.config";
 import { Avatar, Container, HStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { ThemeToggle } from "./Button";
 
 function HeaderLink({ name, href, isActive }) {
   return (
@@ -40,7 +40,7 @@ function Header() {
       opacity={60}
     >
       <HStack justify="space-between" w="full" py={8}>
-        <Link href="/">
+        <Link href="/" passHref>
           <Avatar name="Pravasta Caraka" size="sm" cursor="pointer" />
         </Link>
         <HStack>
