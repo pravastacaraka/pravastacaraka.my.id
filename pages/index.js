@@ -9,8 +9,6 @@ function Home({ projects }) {
     <>
       <Head>
         <title>Pravasta Caraka</title>
-        <meta name="description" content="Web and mobile developer enthusiast." />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <VStack spacing={16} maxW="2xl" mx="auto" justify="center" alignItems="start">

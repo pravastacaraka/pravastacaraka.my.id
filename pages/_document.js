@@ -15,10 +15,9 @@ class MyDocument extends Document {
           <link href="/static/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/static/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link href="/static/favicon/site.webmanifest" rel="manifest" />
+          <meta name="description" content="Web and mobile developer enthusiast." />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-          <meta content="#3182CE" name="theme-color" />
-          <meta content="#3182CE" name="msapplication-TileColor" />
-          <meta content="/static/favicon/browserconfig.xml" name="msapplication-config" />
+          <meta content="#3b82f6" name="theme-color" />
         </Head>
         <body>
           <Main />
