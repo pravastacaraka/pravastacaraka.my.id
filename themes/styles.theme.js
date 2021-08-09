@@ -8,10 +8,10 @@ const styles = {
       transition: "none",
     },
     a: {
-      color: mode("blue.500", "blue.200")(props),
+      color: "#3b82f6",
       fontWeight: "500",
       transition: "color 0.2s ease-out",
-      _hover: { color: mode("blue.600", "blue.300")(props) },
+      _hover: { color: "#1d4ed8" },
     },
   }),
 };

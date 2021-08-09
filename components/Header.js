@@ -35,9 +35,8 @@ function Header() {
       position="sticky"
       top={0}
       zIndex={10}
+      background={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,1)")}
       backdropFilter="saturate(180%) blur(20px)"
-      transition="background-color 0.2s ease-in-out"
-      opacity={60}
     >
       <HStack justify="space-between" w="full" py={8}>
         <Link href="/" passHref>

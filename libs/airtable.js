@@ -15,8 +15,8 @@ const getMinifiedRecords = (records) => {
   return records.map((record) => minifyRecord(record));
 };
 
-async function getTable(table) {
-  const records = await base(table).select({}).all();
+async function getTable(table, args = {}) {
+  const records = await base(table).select(args).all();
   const minifiedRecords = await getMinifiedRecords(records);
 
   return minifiedRecords;

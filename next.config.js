@@ -3,5 +3,6 @@ module.exports = {
   images: {
     loader: "imgix",
     path: "",
+    domains: ["dl.airtable.com"],
   },
 };
