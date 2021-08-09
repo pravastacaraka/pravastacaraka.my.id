@@ -60,8 +60,8 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
             </Text>
             <HStack w="full">
               <HStack mt={2}>
-                {stack.map((item) => (
-                  <Tag size="sm" rounded="full" whiteSpace="nowrap">
+                {stack.map((item, id) => (
+                  <Tag key={id} size="sm" rounded="full" whiteSpace="nowrap">
                     {item}
                   </Tag>
                 ))}
