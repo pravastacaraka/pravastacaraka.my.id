@@ -21,3 +21,5 @@ async function getTable(table) {
 
   return minifiedRecords;
 }
+
+export { getTable };
