@@ -8,6 +8,8 @@ import {
   Text,
   useColorModeValue,
   VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import Image from "next/image";
 
@@ -24,7 +26,7 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
   return (
     <ChakraLink w="full" href={demo_url} _hover={{ color: "inherit" }} _focus={{ border: "none" }} isExternal>
       <Box
-        p={2}
+        p={{ base: 0, md: 2 }}
         d={{ base: "block", md: "flex" }}
         borderWidth="1px"
         borderColor={useColorModeValue("gray.100", "gray.700")}
@@ -34,39 +36,45 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
         <AspectRatio
           w={{ base: "full", md: "320px" }}
           ratio={16 / 9}
-          roundedTop={{ base: "lg" }}
+          roundedTop={{ base: "md" }}
+          roundedBottom={{ md: "md" }}
           overflow="hidden"
         >
           <Image src={img} layout="fill" objectFit="cover" alt={name} />
         </AspectRatio>
-        <HStack w="full" ml={4}>
-          <VStack align="start" justify="flex-start" spacing={2}>
-            <HStack>
-              <Heading as="h3" fontWeight="bold" fontSize="md" noOfLines={2}>
-                {name}
-              </Heading>
-              <Tag size="sm" colorScheme={getTypeColor(type)}>
-                {type}
-              </Tag>
-            </HStack>
+        <HStack w="full" p={4}>
+          <VStack w="full" align="start" justify="flex-start" spacing={2}>
+            <Wrap>
+              <WrapItem>
+                <Heading as="h3" fontWeight="bold" fontSize="md" noOfLines={1}>
+                  {name}
+                </Heading>
+              </WrapItem>
+              <WrapItem>
+                <Tag size="sm" colorScheme={getTypeColor(type)} whiteSpace="nowrap">
+                  {type}
+                </Tag>
+              </WrapItem>
+            </Wrap>
             <Text
               fontSize="sm"
               fontWeight="normal"
               lineHeight="1.75"
+              maxW="65ch"
               color={useColorModeValue("gray.600", "gray.400")}
               noOfLines={2}
             >
               {desc}
             </Text>
-            <HStack w="full">
-              <HStack mt={2}>
-                {stack.map((item, id) => (
-                  <Tag key={id} size="sm" rounded="full" whiteSpace="nowrap">
+            <Wrap w="full" mt={{ base: 0, md: 2 }}>
+              {stack.map((item, id) => (
+                <WrapItem key={id}>
+                  <Tag size="sm" rounded="full" whiteSpace="nowrap" overflow="hidden">
                     {item}
                   </Tag>
-                ))}
-              </HStack>
-            </HStack>
+                </WrapItem>
+              ))}
+            </Wrap>
           </VStack>
         </HStack>
       </Box>

@@ -4,7 +4,6 @@ import { Box, Grid, useColorModeValue } from "@chakra-ui/react";
 import { motion, useCycle } from "framer-motion";
 import { HiHome } from "react-icons/hi";
 import { ThemeToggle } from "./Button";
-import { MENU_LINKS } from "@app-config/app.config";
 
 function MobileNavigation() {
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -14,10 +13,11 @@ function MobileNavigation() {
     <MotionBox
       initial={false}
       animate={isOpen ? "open" : "close"}
-      position="fixed"
+      position="sticky"
       bottom="0"
       left="0"
       right="0"
+      w="full"
       display={{ base: "block", md: "none" }}
     >
       <Grid

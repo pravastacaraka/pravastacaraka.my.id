@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <Header />
-      <Container as="main" pt={{ base: 8, md: 0 }} pb={{ base: 24, md: 16 }}>
+      <Container as="main" pt={{ base: 8, md: 0 }} pb={{ base: 8, md: 16 }}>
         <Component {...pageProps} />
       </Container>
       <MobileNavigation />
