@@ -43,7 +43,7 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
           <Image src={img} layout="fill" objectFit="cover" alt={name} />
         </AspectRatio>
         <HStack w="full" p={4}>
-          <VStack w="full" align="start" justify="flex-start" spacing={2}>
+          <VStack w="full" align="start" justify="flex-start" spacing={4}>
             <Wrap>
               <WrapItem>
                 <Heading as="h3" fontWeight="bold" fontSize="md" noOfLines={1}>
@@ -60,13 +60,12 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
               fontSize="sm"
               fontWeight="normal"
               lineHeight="1.75"
-              maxW="65ch"
               color={useColorModeValue("gray.600", "gray.400")}
               noOfLines={2}
             >
               {desc}
             </Text>
-            <Wrap w="full" mt={{ base: 0, md: 2 }}>
+            <Wrap w="full">
               {stack.map((item, id) => (
                 <WrapItem key={id}>
                   <Tag size="sm" rounded="full" whiteSpace="nowrap" overflow="hidden">

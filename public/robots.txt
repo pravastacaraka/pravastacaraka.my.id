@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://pravastacaraka.github.io/sitemap.xml
+Host: https://pravastacaraka.my.id/
+Sitemap: https://pravastacaraka.my.id/sitemap.xml

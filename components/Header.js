@@ -30,15 +30,16 @@ function Header() {
   return (
     <Container
       as="nav"
-      d={{ base: "none", md: "block" }}
+      p={8}
       my={{ base: 6, md: 8 }}
       position="sticky"
       top={0}
       zIndex={10}
+      d={{ base: "none", md: "block" }}
       background={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,1)")}
       backdropFilter="saturate(180%) blur(20px)"
     >
-      <HStack justify="space-between" w="full" py={8}>
+      <HStack justify="space-between" w="full">
         <Link href="/" passHref>
           <Avatar name="Pravasta Caraka" size="sm" cursor="pointer" />
         </Link>
