@@ -13,7 +13,13 @@ function Home({ projects }) {
 
       <VStack spacing={16} maxW="2xl" mx="auto" justify="center" alignItems="start">
         <Box as="section" w="full">
-          <Heading as="h1" fontSize={{ base: "3xl", md: "5xl" }} letterSpacing="tight" mb={4}>
+          <Heading
+            as="h1"
+            fontSize={{ base: "3xl", md: "5xl" }}
+            lineHeight={{ base: "8", md: "none" }}
+            letterSpacing="tight"
+            mb={4}
+          >
             Hey, I&apos;m Pravasta Caraka
           </Heading>
           <Text color={useColorModeValue("gray.600", "gray.400")} lineHeight="1.75" maxW="65ch">
@@ -27,7 +33,13 @@ function Home({ projects }) {
         </Box>
 
         <Box as="section" w="full">
-          <Heading as="h2" fontSize={{ base: "2xl", md: "4xl" }} letterSpacing="tight" mb={4}>
+          <Heading
+            as="h2"
+            fontSize={{ base: "2xl", md: "4xl" }}
+            lineHeight={{ base: "8", md: "10" }}
+            letterSpacing="tight"
+            mb={4}
+          >
             Recent Projects
           </Heading>
           <VStack spacing={4}>
