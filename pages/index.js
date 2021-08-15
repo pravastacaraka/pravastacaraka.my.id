@@ -65,7 +65,7 @@ function Home({ projects, skills }) {
           </Text>
           <HStack>
             <NextChakraLink
-              href="https://bit.ly/cvpravastacaraka"
+              href="https://bit.ly/3xR1sbX"
               prefetch={false}
               isExternal
               color={useColorModeValue("black", "white")}
