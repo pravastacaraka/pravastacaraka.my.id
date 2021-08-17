@@ -1,7 +1,7 @@
 import Footer from "@app-components/Footer";
 import Header from "@app-components/Header";
 import MobileNavigation from "@app-components/MobileNavigation";
-import customTheme from "@app-themes/default.theme";
+import customTheme from "@app-styles/theme";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 import "@fontsource/inter/variable.css";
 import { useRouter } from "next/dist/client/router";
