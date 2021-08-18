@@ -47,8 +47,10 @@ const customTheme = extendTheme({
       baseStyle: (props) => ({
         color: mode("#3b82f6", "yellow.200")(props),
         fontWeight: "500",
-        _focus: { border: "none" },
-        _hover: { textDecoration: "underline" },
+        _hover: {
+          color: mode("#3b82f6", "yellow.200")(props),
+          textDecoration: "underline",
+        },
       }),
     },
   },

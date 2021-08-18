@@ -1,5 +1,5 @@
 import MobileMenuItem from "@app-components/mobile-menu/mobile-menu-item";
-import { MENU_LINKS } from "@app-config/app.config";
+import { _app_routes } from "@app-config/app.config";
 import {
   Drawer,
   DrawerBody,
@@ -25,8 +25,8 @@ function MobileMenuToggle() {
             <DrawerHeader>Menu</DrawerHeader>
             <DrawerBody pb={4}>
               <VStack>
-                {MENU_LINKS.map(({ title, path }) => (
-                  <MobileMenuItem key={title} title={title} href={path} />
+                {_app_routes.map(({ title, href }) => (
+                  <MobileMenuItem key={title} title={title} href={href} />
                 ))}
               </VStack>
             </DrawerBody>

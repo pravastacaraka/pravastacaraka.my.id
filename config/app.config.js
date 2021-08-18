@@ -1,14 +1,31 @@
-export const MENU_LINKS = Object.freeze([
+export const _app_config = Object.freeze({
+  domain: "pravastacaraka.my.id",
+  baseUrl: "https://pravastacaraka.my.id",
+});
+
+export const _app_routes = Object.freeze([
   {
     title: "Home",
-    path: "/",
+    href: "/",
   },
   {
     title: "About",
-    path: "/about",
+    href: "/about",
+  },
+  {
+    title: "Projects",
+    href: "/projects",
+  },
+  {
+    title: "Skills",
+    href: "/about#skills",
+  },
+  {
+    title: "Achievements",
+    href: "/about#achievements",
   },
   {
     title: "Blog",
-    path: "/blog",
+    href: "/blog",
   },
 ]);
