@@ -1,4 +1,4 @@
-# pravastacaraka.my.id
+# @pravastacaraka/pravastacaraka.my.id
 
 Welcome behind the curtain of my personal slice of the internet provides a platform for my writing and to showcase my latest work. Take a look around.
 
@@ -18,3 +18,7 @@ $ npm run dev # or yarn dev
 ## Question or feedback
 
 Do you have questions or feedback? Then the reach out to me on [Email](mailto:raka@pravastacaraka.my.id), [Facebook](https://facebook.com/pravastacaraka), [Twitter](https://twitter.com/pravastacaraka), or [LinkedIn](https://www.linkedin.com/in/pravastacaraka).
+
+## License
+
+[MIT License, Copyright (c) 2021 Pravasta Caraka Bramastagiri](https://github.com/pravastacaraka/pravastacaraka.my.id/blob/main/LICENSE)
