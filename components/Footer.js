@@ -1,12 +1,53 @@
-import { Container, Divider, HStack, Text } from "@chakra-ui/react";
-import Link from "next/link";
+import {
+  ButtonGroup,
+  Container,
+  HStack,
+  Icon,
+  IconButton,
+  Link,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { FaEnvelope, FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
-function FooterLink({ href, name, ...props }) {
+const footerSocials = [
+  {
+    name: "Email",
+    href: "mailto:raka@pravastacaraka.my.id",
+    icon: FaEnvelope,
+  },
+  {
+    name: "Github",
+    href: "https://github.com/pravastacaraka",
+    icon: FaGithub,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/pravastacaraka",
+    icon: FaLinkedinIn,
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/pravastacaraka",
+    icon: FaFacebookF,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/pravastacaraka",
+    icon: FaTwitter,
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/pravastacaraka",
+    icon: FaInstagram,
+  },
+];
+
+function FooterLink({ href, name, icon, isButton = false, isExternal = false, ...props }) {
   return (
-    <Link href={href} passHref>
-      <Text as="a" color="gray.500" _hover={{ color: "gray.600" }} {...props}>
-        {name}
-      </Text>
+    <Link href={href} {...props} isExternal>
+      {isButton ? <IconButton aria-label={name} icon={<Icon as={icon} />} variant="ghost" /> : name}
     </Link>
   );
 }
@@ -14,17 +55,45 @@ function FooterLink({ href, name, ...props }) {
 function Footer() {
   const date = new Date().getFullYear();
   return (
-    <Container as="footer" d={{ base: "none", md: "block" }}>
-      <Divider />
-      <HStack justify="space-between" w="full" py={4}>
-        <Text fontSize="sm" color="gray.500">
-          © {date} Pravasta Caraka Bramastagiri
-        </Text>
+    <Container as="footer" px={4} py={8}>
+      <Stack align="center" color="gray.500" textAlign="center">
+        <ButtonGroup>
+          {footerSocials.map((social) => (
+            <FooterLink
+              key={social.name}
+              {...social}
+              isButton
+              isExternal
+              color={useColorModeValue("gray.600", "gray.400")}
+            />
+          ))}
+        </ButtonGroup>
+        <Stack spacing={0}>
+          <Text>
+            Made using&nbsp;
+            <Link href="https://nextjs.org" isExternal>
+              Next.js
+            </Link>
+            ,&nbsp;
+            <Link href="https://chakra-ui.com" isExternal>
+              Chakra UI
+            </Link>
+            , and&nbsp;
+            <Link href="https://airtable.com" isExternal>
+              Airtable
+            </Link>
+            . Hosted in&nbsp;
+            <Link href="https://vercel.com" isExternal>
+              Vercel
+            </Link>
+          </Text>
+          <Text>MIT License © {date} Pravasta Caraka Bramastagiri</Text>
+        </Stack>
         <HStack spacing={4}>
           <FooterLink href="/disclaimer" name="Disclaimer" />
           <FooterLink href="/privacy" name="Privacy" />
         </HStack>
-      </HStack>
+      </Stack>
     </Container>
   );
 }
