@@ -1,16 +1,5 @@
-import NextChakraLink from "@app-components/NextChakraLink";
-import {
-  Box,
-  Button,
-  Center,
-  Heading,
-  HStack,
-  Icon,
-  Link as ChakraLink,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { NextChakraLink, NextChakraLinkButton } from "@app-components/NextChakraLink";
+import { Box, Center, Heading, HStack, Icon, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
@@ -22,8 +11,8 @@ function Home() {
       <Head>
         <title>Pravasta Caraka</title>
       </Head>
-      <Box borderRadius="full" overflow="hidden" mx="auto" boxSize={{ base: 40, md: 48 }} mb={10}>
-        <NextChakraLink href="/about" prefetch={false} _focus={{ boxShadow: "none" }}>
+      <Box borderRadius="full" boxSize={{ base: 40, md: 48 }} mb={10} mx="auto" overflow="hidden">
+        <NextChakraLink href="/about" _focus={{ boxShadow: "none" }}>
           <Image src={profilePic} alt="Picture of the Author" placeholder="blur" />
         </NextChakraLink>
       </Box>
@@ -35,37 +24,40 @@ function Home() {
         <Text color={useColorModeValue("gray.600", "gray.400")} fontSize={["lg", "xl"]} maxW="65ch">
           Web and mobile developer enthusiast. Currently based on Surabaya, Indonesia. You’ve found my personal
           slice of the internet, while you&apos;re here you can&nbsp;
-          <ChakraLink href="/about">learn more about me</ChakraLink>.
+          <NextChakraLink href="/about">learn more about me</NextChakraLink>.
         </Text>
       </Stack>
 
-      <HStack justify="center">
-        <NextChakraLink
+      <HStack justify="center" spacing={3}>
+        <NextChakraLinkButton
           href="https://bit.ly/3xR1sbX"
-          prefetch={false}
+          minW={{ md: 40 }}
+          rightIcon={<Icon as={HiOutlineDocumentDownload} />}
+          variant="outline"
+          _hover={{
+            borderColor: useColorModeValue("black", "white"),
+            transform: "scale(1.05)",
+          }}
           isExternal
-          color={useColorModeValue("black", "white")}
-          _hover={{ color: useColorModeValue("black", "white") }}
         >
-          <Button variant="outline" rightIcon={<Icon as={HiOutlineDocumentDownload} />} minW={{ md: 40 }}>
-            View CV
-          </Button>
-        </NextChakraLink>
-        <NextChakraLink
+          View CV
+        </NextChakraLinkButton>
+        <NextChakraLinkButton
           href="/contact"
-          prefetch={false}
+          bg={useColorModeValue("black", "white")}
           color={useColorModeValue("white", "black")}
-          _hover={{ color: useColorModeValue("white", "black") }}
+          minW={{ md: 40 }}
+          variant="solid"
+          _hover={{
+            borderWidth: "1px",
+            borderColor: useColorModeValue("black", "white"),
+            color: useColorModeValue("black", "white"),
+            bg: useColorModeValue("white", "black"),
+            transform: "scale(1.05)",
+          }}
         >
-          <Button
-            variant="solid"
-            bg={useColorModeValue("black", "white")}
-            _hover={{ bg: useColorModeValue("gray.900", "gray.100") }}
-            minW={{ md: 40 }}
-          >
-            Get in Touch
-          </Button>
-        </NextChakraLink>
+          Get in Touch
+        </NextChakraLinkButton>
       </HStack>
     </Center>
   );

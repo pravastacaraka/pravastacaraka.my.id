@@ -4,8 +4,8 @@ import MobileNavigation from "@app-components/MobileNavigation";
 import customTheme from "@app-styles/theme";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 import "@fontsource/inter/variable.css";
-import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   // Next.js bug where page state is not reset - https://github.com/vercel/next.js/issues/9992

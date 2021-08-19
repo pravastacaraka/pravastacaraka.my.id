@@ -1,15 +1,6 @@
-import {
-  ButtonGroup,
-  Container,
-  HStack,
-  Icon,
-  IconButton,
-  Link,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { FaEnvelope, FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { ButtonGroup, Container, HStack, Icon, Link, Stack, Text } from "@chakra-ui/react";
+import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { NextChakraLink, NextChakraLinkIconButton } from "./NextChakraLink";
 
 const footerSocials = [
   {
@@ -30,7 +21,7 @@ const footerSocials = [
   {
     name: "Facebook",
     href: "https://facebook.com/pravastacaraka",
-    icon: FaFacebookF,
+    icon: FaFacebook,
   },
   {
     name: "Twitter",
@@ -44,14 +35,6 @@ const footerSocials = [
   },
 ];
 
-function FooterLink({ href, name, icon, isButton = false, isExternal = false, ...props }) {
-  return (
-    <Link href={href} {...props} isExternal>
-      {isButton ? <IconButton aria-label={name} icon={<Icon as={icon} />} variant="ghost" /> : name}
-    </Link>
-  );
-}
-
 function Footer() {
   const date = new Date().getFullYear();
   return (
@@ -59,12 +42,16 @@ function Footer() {
       <Stack align="center" color="gray.500" textAlign="center">
         <ButtonGroup>
           {footerSocials.map((social) => (
-            <FooterLink
+            <NextChakraLinkIconButton
               key={social.name}
-              {...social}
-              isButton
+              href={social.href}
+              aria-label={social.name}
+              color="gray.500"
+              icon={<Icon as={social.icon} />}
+              _hover={{
+                transform: "scale(1.05)",
+              }}
               isExternal
-              color={useColorModeValue("gray.600", "gray.400")}
             />
           ))}
         </ButtonGroup>
@@ -90,8 +77,8 @@ function Footer() {
           <Text>MIT License © {date} Pravasta Caraka Bramastagiri</Text>
         </Stack>
         <HStack spacing={4}>
-          <FooterLink href="/disclaimer" name="Disclaimer" />
-          <FooterLink href="/privacy" name="Privacy" />
+          <NextChakraLink href="/disclaimer">Disclaimer</NextChakraLink>
+          <NextChakraLink href="/privacy">Privacy</NextChakraLink>
         </HStack>
       </Stack>
     </Container>
