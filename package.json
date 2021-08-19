@@ -1,13 +1,14 @@
 {
-  "name": "pravastacaraka.github.io",
+  "name": "pravastacaraka.my.id",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "next build && npm run sitemap",
+    "build:static": "npm run build && next export",
     "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sitemap": "next-sitemap --config config/sitemap.config.js",
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.5",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
-    "eslint-config-prettier": "^8.3.0"
+    "eslint-config-prettier": "^8.3.0",
+    "next-sitemap": "^1.6.162"
   }
 }

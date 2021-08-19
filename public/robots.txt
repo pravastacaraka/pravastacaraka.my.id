@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Host: https://pravastacaraka.my.id/
-Sitemap: https://pravastacaraka.my.id/sitemap.xml

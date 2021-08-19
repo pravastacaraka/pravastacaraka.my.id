@@ -1,6 +1,6 @@
 export const _app_config = Object.freeze({
-  domain: "pravastacaraka.my.id",
-  baseUrl: "https://pravastacaraka.my.id",
+  domain: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+  baseUrl: `https://${process.env.NEXT_PUBLIC_SITE_URL}`,
 });
 
 export const _app_routes = Object.freeze([
