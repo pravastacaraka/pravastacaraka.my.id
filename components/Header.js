@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { NextChakraLinkButton } from "./NextChakraLink";
 
 function HeaderLink({ name, href, isActive }) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#3b82f6") : undefined;
   return (
     <NextChakraLinkButton
@@ -27,7 +27,7 @@ function HeaderLink({ name, href, isActive }) {
 
 function Header() {
   const router = useRouter();
-  const isRoute = useCallback((route) => router.route == route, [router.route]);
+  const isRoute = useCallback((asPath) => router.asPath == asPath, [router.asPath]);
   return (
     <Container
       as="nav"

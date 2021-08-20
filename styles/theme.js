@@ -53,6 +53,11 @@ const customTheme = extendTheme({
         },
       }),
     },
+    Text: {
+      baseStyle: (props) => ({
+        color: mode("gray.600", "gray.400")(props),
+      }),
+    },
   },
 });
 
