@@ -45,10 +45,10 @@ const customTheme = extendTheme({
     },
     Link: {
       baseStyle: (props) => ({
-        color: mode("#3b82f6", "yellow.200")(props),
+        color: mode("#2756a3", "yellow.200")(props),
         fontWeight: "500",
         _hover: {
-          color: mode("#3b82f6", "yellow.200")(props),
+          color: mode("#2756a3", "yellow.200")(props),
           textDecoration: "underline",
         },
       }),

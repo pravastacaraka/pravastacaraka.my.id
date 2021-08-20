@@ -7,7 +7,7 @@ import { NextChakraLinkButton } from "./NextChakraLink";
 
 function HeaderLink({ name, href, isActive }) {
   const { colorMode } = useColorMode();
-  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#3b82f6") : undefined;
+  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#2756a3") : undefined;
   return (
     <NextChakraLinkButton
       href={href}

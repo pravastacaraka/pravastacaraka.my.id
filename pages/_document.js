@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <link href="/static/favicon/site.webmanifest" rel="manifest" />
           <meta name="description" content="Web and mobile developer enthusiast." />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-          <meta content="#3b82f6" name="theme-color" />
+          <meta content="#2756a3" name="theme-color" />
         </Head>
         <body>
           <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
