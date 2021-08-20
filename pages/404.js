@@ -19,6 +19,7 @@ function NotFoundPage() {
     >
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
+        <meta name="description" content={pageMeta.description} />
       </Head>
       <Heading as="h1" size="xl" maxW="lg">
         {pageMeta.description}

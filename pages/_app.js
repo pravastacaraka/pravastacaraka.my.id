@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <Header />
-      <Container as="main" pt={{ base: 8, md: 0 }} pb={{ base: 8, md: 0 }} px={4}>
+      <Container as="main" pt={{ base: 4, md: 8 }} pb={{ base: 8, md: 0 }} px={4}>
         <Component {...pageProps} key={asPath} />
       </Container>
       <Footer />
