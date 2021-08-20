@@ -1,8 +1,10 @@
-import { _app_config as siteUrl } from "@app-config/app.config";
+const { _app_config } = require("./app.config");
 
-export const _sitemap_config = Object.freeze({
+const _sitemap_config = Object.freeze({
   changefreq: "daily",
   generateRobotsTxt: true,
   priority: 0.7,
-  siteUrl,
+  siteUrl: _app_config.siteUrl,
 });
+
+module.exports = _sitemap_config;

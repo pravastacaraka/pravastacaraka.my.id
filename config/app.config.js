@@ -1,9 +1,9 @@
-export const _app_config = Object.freeze({
+const _app_config = Object.freeze({
   domain: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-  baseUrl: `https://${process.env.NEXT_PUBLIC_SITE_URL}`,
+  siteUrl: `https://${process.env.NEXT_PUBLIC_SITE_URL}`,
 });
 
-export const _app_routes = Object.freeze([
+const _app_routes = Object.freeze([
   {
     title: "Home",
     href: "/",
@@ -29,3 +29,5 @@ export const _app_routes = Object.freeze([
     href: "/blog",
   },
 ]);
+
+module.exports = { _app_config, _app_routes };
