@@ -1,20 +1,22 @@
 import { ThemeToggle } from "@app-components/Button";
 import { _app_routes } from "@app-config/app.config";
-import { Container, HStack, useColorModeValue } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
+import { Container, HStack, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { NextChakraLinkButton } from "./NextChakraLink";
 
 function HeaderLink({ name, href, isActive }) {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#3b82f6") : undefined;
   return (
     <NextChakraLinkButton
       href={href}
-      color={isActive ? useColorModeValue("#3b82f6", "yellow.200") : undefined}
+      color={textColor}
       fontWeight={isActive ? "bold" : "normal"}
       variant="ghost"
       _hover={{
         bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-        color: isActive ? useColorModeValue("#3b82f6", "yellow.200") : undefined,
+        color: textColor,
         transform: "scale(1.05)",
       }}
     >

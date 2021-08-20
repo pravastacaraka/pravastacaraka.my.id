@@ -1,4 +1,4 @@
-import { Icon, IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Icon, IconButton, useColorMode } from "@chakra-ui/react";
 import { HiMoon, HiSun } from "react-icons/hi";
 import MobileMenuButton from "./mobile-menu/mobile-menu-button";
 
@@ -14,7 +14,7 @@ function ThemeToggle({ mobile }) {
   ) : (
     <IconButton
       aria-label="Toogle dark mode"
-      icon={<Icon as={colorMode === "dark" ? HiSun : HiMoon} color={useColorModeValue("black", "white")} />}
+      icon={<Icon as={colorMode === "dark" ? HiSun : HiMoon} color={colorMode === "dark" ? "white" : "black"} />}
       variant="ghost"
       onClick={handleClick}
     />
