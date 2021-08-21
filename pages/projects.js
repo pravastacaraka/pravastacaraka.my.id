@@ -13,25 +13,39 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
+import { getPlaiceholder } from "plaiceholder";
 
 export async function getStaticProps() {
-  const res = await getTable("Recent Projects", {
+  // fetch projects from airtable
+  const projects = await getTable("Recent Projects", {
     sort: [{ field: "id", direction: "desc" }],
   });
+  // fetch projects image blur data from plaiceholder
+  const plaiceholders = await Promise.all(
+    projects.map(async (item) => {
+      const { base64, img } = await getPlaiceholder(item.fields?.images[0]?.url);
+      return { base64, img };
+    })
+  ).then((values) => values);
+  // return props
   return {
     props: {
-      projects: res,
+      projects: projects,
+      imgProps: plaiceholders.map(({ base64, img }) => ({
+        blurDataURL: base64,
+        src: img.src,
+        type: img.type,
+      })),
     },
     revalidate: 60,
   };
 }
 
-function ProjectsPage({ projects }) {
+function ProjectsPage({ projects, imgProps }) {
   const pageMeta = {
     title: "Recent Projects",
     description: "Here are some of my past works from personal projects and open source ones.",
   };
-  console.log(projects);
   return (
     <Stack
       as="section"
@@ -54,7 +68,7 @@ function ProjectsPage({ projects }) {
         </Text>
 
         <SimpleGrid columns={[1, 1, 2]} gap={4}>
-          {projects.map((project) => (
+          {projects.map((project, projectId) => (
             <LinkBox
               key={project.id}
               _hover={{ boxShadow: "lg", transform: "scale(1.05)" }}
@@ -69,10 +83,11 @@ function ProjectsPage({ projects }) {
             >
               <AspectRatio ratio={16 / 9} w={{ base: "343px", md: "424px" }} _groupHover={{ filter: "blur(2px)" }}>
                 <Image
-                  src={project.fields.images[0]?.url}
                   layout="fill"
                   objectFit="cover"
                   alt="Preview of the project"
+                  placeholder="blur"
+                  {...imgProps[projectId]}
                 />
               </AspectRatio>
 
