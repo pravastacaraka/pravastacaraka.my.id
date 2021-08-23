@@ -17,12 +17,8 @@ const _app_routes = Object.freeze([
     href: "/projects",
   },
   {
-    title: "Skills",
-    href: "/about#skills",
-  },
-  {
     title: "Achievements",
-    href: "/about#achievements",
+    href: "/achievements",
   },
   {
     title: "Blog",
