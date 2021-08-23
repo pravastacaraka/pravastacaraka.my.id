@@ -49,10 +49,9 @@ function ProjectsPage({ projects, imgProps }) {
   return (
     <Stack
       as="section"
-      flexDir="column"
       minH={{
         base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 168px)",
+        md: "calc(100vh - var(--chakra-space-32) - 200px)",
       }}
       spacing={8}
     >
@@ -67,73 +66,85 @@ function ProjectsPage({ projects, imgProps }) {
           {pageMeta.description}
         </Text>
 
-        <SimpleGrid columns={[1, 1, 2]} gap={4}>
-          {projects.map((project, projectId) => (
-            <LinkBox
-              key={project.id}
-              _hover={{ boxShadow: "lg", transform: "scale(1.05)" }}
-              bgColor="whiteAlpha.50"
-              overflow="hidden"
-              role="group"
-              rounded="md"
-              transform="auto-gpu"
-              transitionDuration="slow"
-              transitionProperty="transform"
-              transitionTimingFunction="cubic-bezier(.175,.885,.32,1.275)"
-            >
-              <AspectRatio ratio={16 / 9} w={{ base: "343px", md: "424px" }} _groupHover={{ filter: "blur(2px)" }}>
-                <Image
-                  layout="fill"
-                  objectFit="cover"
-                  alt="Preview of the project"
-                  placeholder="blur"
-                  {...imgProps[projectId]}
-                />
-              </AspectRatio>
-
-              <Stack
-                _groupHover={{ opacity: 1 }}
-                align="center"
-                bgColor="blackAlpha.700"
-                inset={0}
-                justify="center"
-                opacity={0}
-                pos="absolute"
-                px={8}
-                py={4}
-                transitionDuration="normal"
-                transitionProperty="opacity"
-                transitionTimingFunction="cubic-bezier(.39,.575,.565,1)"
+        {projects ? (
+          <SimpleGrid columns={[1, 1, 2]} gap={4}>
+            {projects.map((project, projectId) => (
+              <LinkBox
+                key={project.id}
+                _hover={{ boxShadow: "lg", transform: "scale(1.05)" }}
+                bgColor="whiteAlpha.50"
+                overflow="hidden"
+                role="group"
+                rounded="md"
+                transform="auto-gpu"
+                transitionDuration="slow"
+                transitionProperty="transform"
+                transitionTimingFunction="cubic-bezier(.175,.885,.32,1.275)"
               >
-                <Heading size="md" color="white">
-                  {project.fields.name}
-                </Heading>
-                <Text color="white" fontSize={["xs", "sm"]} noOfLines={2}>
-                  {project.fields.desc}
-                </Text>
-                <LinkOverlay
-                  href={project.fields.demo_url}
-                  color="yellow.200"
-                  fontSize={["xs", "sm"]}
-                  noOfLines={1}
-                  pb={4}
-                  isExternal
+                <AspectRatio
+                  ratio={16 / 9}
+                  w={{ base: "343px", md: "424px" }}
+                  _groupHover={{ filter: "blur(2px)" }}
                 >
-                  {project.fields.demo_url?.replace(/https?:\/\//, "")}
-                </LinkOverlay>
-                <Wrap justify="center">
-                  {project.fields.stack?.map((st) => (
-                    <WrapItem key={st}>
-                      <Tag size="sm" variant="subtle">
-                        {st}
-                      </Tag>
-                    </WrapItem>
-                  ))}
-                </Wrap>
-              </Stack>
-            </LinkBox>
-          ))}
-        </SimpleGrid>
+                  <Image
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Preview of the project"
+                    placeholder="blur"
+                    {...imgProps[projectId]}
+                  />
+                </AspectRatio>
+
+                <Stack
+                  _groupHover={{ opacity: 1 }}
+                  align="center"
+                  bgColor="blackAlpha.700"
+                  inset={0}
+                  justify="center"
+                  opacity={0}
+                  pos="absolute"
+                  px={8}
+                  py={4}
+                  transitionDuration="normal"
+                  transitionProperty="opacity"
+                  transitionTimingFunction="cubic-bezier(.39,.575,.565,1)"
+                >
+                  <Heading size="md" color="white">
+                    {project.fields.name}
+                  </Heading>
+                  <Text color="white" fontSize={["xs", "sm"]} noOfLines={2}>
+                    {project.fields.desc}
+                  </Text>
+                  <LinkOverlay
+                    href={project.fields.demo_url}
+                    color="yellow.200"
+                    fontSize={["xs", "sm"]}
+                    noOfLines={1}
+                    pb={4}
+                    isExternal
+                  >
+                    {project.fields.demo_url?.replace(/https?:\/\//, "")}
+                  </LinkOverlay>
+                  <Wrap justify="center">
+                    {project.fields.stack?.map((st) => (
+                      <WrapItem key={st}>
+                        <Tag size="sm" variant="subtle">
+                          {st}
+                        </Tag>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                </Stack>
+              </LinkBox>
+            ))}
+          </SimpleGrid>
+        ) : (
+          <Stack spacing={4} textAlign="center">
+            <Center minH="calc(100vh - var(--chakra-space-32) - 315px)">
+              <Text>Don't have any projects.</Text>
+            </Center>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
