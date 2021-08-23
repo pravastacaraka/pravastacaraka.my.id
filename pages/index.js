@@ -30,7 +30,7 @@ function Home() {
 
       <HStack justify="center" spacing={3}>
         <NextChakraLinkButton
-          href="https://bit.ly/3xR1sbX"
+          href="http://link.pravastacaraka.my.id/cv-2021"
           minW={{ md: 40 }}
           rightIcon={<Icon as={HiOutlineDocumentDownload} />}
           variant="outline"

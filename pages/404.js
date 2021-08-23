@@ -14,7 +14,7 @@ function NotFoundPage() {
       flexDir="column"
       minH={{
         base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 168px)",
+        md: "calc(100vh - var(--chakra-space-32) - 200px)",
       }}
     >
       <Head>
