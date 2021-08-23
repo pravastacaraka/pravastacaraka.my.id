@@ -30,7 +30,7 @@ function BlogPage({ posts }) {
       ) : (
         <Stack spacing={4} textAlign="center">
           <Center minH="calc(100vh - var(--chakra-space-32) - 315px)">
-            <Text>Don't have any posts.</Text>
+            <Text>Don&apos;t have any posts.</Text>
           </Center>
         </Stack>
       )}

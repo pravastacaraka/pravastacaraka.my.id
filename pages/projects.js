@@ -1,6 +1,7 @@
 import { getTable } from "@app-libs/airtable";
 import {
   AspectRatio,
+  Center,
   Heading,
   LinkBox,
   LinkOverlay,
@@ -141,7 +142,7 @@ function ProjectsPage({ projects, imgProps }) {
         ) : (
           <Stack spacing={4} textAlign="center">
             <Center minH="calc(100vh - var(--chakra-space-32) - 315px)">
-              <Text>Don't have any projects.</Text>
+              <Text>Don&apos;t have any projects.</Text>
             </Center>
           </Stack>
         )}

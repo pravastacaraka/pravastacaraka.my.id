@@ -82,6 +82,27 @@ function Step({ children, title, news_url }) {
   );
 }
 
+function SeeMore({ clickHandler }) {
+  return (
+    <Button
+      variant="ghost"
+      color={useColorModeValue("gray.900", "gray.100")}
+      rightIcon={<Icon as={HiOutlineChevronDown} />}
+      fontWeight="medium"
+      mt={4}
+      mx="auto"
+      transform="auto-gpu"
+      transition="transform .3s cubic-bezier(.175,.885,.32,1.275), background-color .2s cubic-bezier(.39,.575,.565,1)"
+      _hover={{
+        transform: "scale(1.05)",
+      }}
+      onClick={() => clickHandler(true)}
+    >
+      See More
+    </Button>
+  );
+}
+
 function AchievementPage({ awards, licenses }) {
   const [isShowingFullAwards, showFullAwards] = useState(false);
   const pageMeta = {
@@ -137,28 +158,11 @@ function AchievementPage({ awards, licenses }) {
                     );
                   })}
               </Stack>
-              {!isShowingFullAwards && (
-                <Button
-                  variant="ghost"
-                  color={useColorModeValue("gray.900", "gray.100")}
-                  rightIcon={<Icon as={HiOutlineChevronDown} />}
-                  fontWeight="medium"
-                  mt={4}
-                  mx="auto"
-                  transform="auto-gpu"
-                  transition="transform .3s cubic-bezier(.175,.885,.32,1.275), background-color .2s cubic-bezier(.39,.575,.565,1)"
-                  _hover={{
-                    transform: "scale(1.05)",
-                  }}
-                  onClick={() => showFullAwards(true)}
-                >
-                  See More
-                </Button>
-              )}
+              {!isShowingFullAwards && <SeeMore clickHandler={showFullAwards} />}
             </>
           ) : (
             <Box>
-              <Text>Don't have any awards and funding.</Text>
+              <Text>Don&apos;t have any awards and funding.</Text>
             </Box>
           )}
         </Flex>
@@ -190,28 +194,11 @@ function AchievementPage({ awards, licenses }) {
                     );
                   })}
               </Stack>
-              {!isShowingFullAwards && (
-                <Button
-                  variant="ghost"
-                  color={useColorModeValue("gray.900", "gray.100")}
-                  rightIcon={<Icon as={HiOutlineChevronDown} />}
-                  fontWeight="medium"
-                  mt={4}
-                  mx="auto"
-                  transform="auto-gpu"
-                  transition="transform .3s cubic-bezier(.175,.885,.32,1.275), background-color .2s cubic-bezier(.39,.575,.565,1)"
-                  _hover={{
-                    transform: "scale(1.05)",
-                  }}
-                  onClick={() => showFullAwards(true)}
-                >
-                  See More
-                </Button>
-              )}
+              {!isShowingFullAwards && <SeeMore clickHandler={showFullAwards} />}
             </>
           ) : (
             <Box>
-              <Text>Don't have any certifications.</Text>
+              <Text>Don&apos;t have any certifications.</Text>
             </Box>
           )}
         </Flex>
