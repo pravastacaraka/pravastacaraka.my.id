@@ -1,8 +1,8 @@
-module.exports = {
+const { withPlaiceholder } = require("@plaiceholder/next");
+
+module.exports = withPlaiceholder({
   reactStrictMode: true,
   images: {
-    loader: "imgix",
-    path: "",
     domains: ["dl.airtable.com"],
   },
-};
+});

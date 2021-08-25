@@ -1,7 +1,4 @@
-import Container from "@app-styles/components/container";
-import Heading from "@app-styles/components/heading";
-import fonts from "@app-styles/foundations/fonts";
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, theme as defaultTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 const config = {
@@ -9,20 +6,21 @@ const config = {
   initialColorMode: "light",
 };
 
+const fonts = {
+  body: `'Inter', ${defaultTheme.fonts.body}`,
+  heading: `'Inter', ${defaultTheme.fonts.heading}`,
+};
+
 const styles = {
   global: (props) => ({
-    "html, body": {
+    html: {
+      scrollBehavior: "smooth",
+    },
+    body: {
       minW: "320px",
       color: mode("black", "white")(props),
       bg: mode("white", "black")(props),
       transition: "none",
-      scrollBehavior: "smooth",
-    },
-    a: {
-      color: "#3b82f6",
-      fontWeight: "500",
-      transition: "color 0.2s ease-out",
-      _hover: { color: "#1d4ed8" },
     },
   }),
 };
@@ -32,8 +30,34 @@ const customTheme = extendTheme({
   fonts,
   styles,
   components: {
-    Container,
-    Heading,
+    Container: {
+      baseStyle: {
+        w: "full",
+        maxW: "4xl",
+        px: { base: "6", md: "8" },
+      },
+    },
+    Heading: {
+      baseStyle: {
+        fontWeight: 800,
+        letterSpacing: "tighter",
+      },
+    },
+    Link: {
+      baseStyle: (props) => ({
+        color: mode("#2756a3", "yellow.200")(props),
+        fontWeight: "500",
+        _hover: {
+          color: mode("#2756a3", "yellow.200")(props),
+          textDecoration: "underline",
+        },
+      }),
+    },
+    Text: {
+      baseStyle: (props) => ({
+        color: mode("gray.600", "gray.400")(props),
+      }),
+    },
   },
 });
 

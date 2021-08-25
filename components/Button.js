@@ -14,15 +14,8 @@ function ThemeToggle({ mobile }) {
   ) : (
     <IconButton
       aria-label="Toogle dark mode"
-      icon={
-        <Icon
-          as={colorMode === "dark" ? HiSun : HiMoon}
-          boxSize={4}
-          color={colorMode === "dark" ? "gray.200" : "gray.800"}
-        />
-      }
-      bg={colorMode === "dark" ? "gray.800" : "gray.200"}
-      _hover={{ bg: colorMode === "dark" ? "gray.800" : "gray.200" }}
+      icon={<Icon as={colorMode === "dark" ? HiSun : HiMoon} color={colorMode === "dark" ? "white" : "black"} />}
+      variant="ghost"
       onClick={handleClick}
     />
   );

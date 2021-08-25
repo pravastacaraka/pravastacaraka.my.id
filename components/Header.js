@@ -1,58 +1,51 @@
 import { ThemeToggle } from "@app-components/Button";
-import { MENU_LINKS } from "@app-config/app.config";
-import { Avatar, Container, HStack, Text, useColorModeValue } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
-import Link from "next/link";
+import { _app_routes } from "@app-config/app.config";
+import { Container, HStack, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+import { NextChakraLinkButton } from "./NextChakraLink";
 
 function HeaderLink({ name, href, isActive }) {
+  const { colorMode } = useColorMode();
+  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#2756a3") : undefined;
   return (
-    <Link href={href} passHref>
-      <Text
-        as="a"
-        px={4}
-        color="gray.500"
-        _hover={{ color: "gray.600" }}
-        aria-current={isActive ? "page" : undefined}
-        _activeLink={{
-          color: useColorModeValue("gray.900", "gray.100"),
-        }}
-      >
-        {name}
-      </Text>
-    </Link>
+    <NextChakraLinkButton
+      href={href}
+      color={textColor}
+      fontWeight={isActive ? "bold" : "normal"}
+      variant="ghost"
+      _hover={{
+        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
+        color: textColor,
+        transform: "scale(1.05)",
+      }}
+    >
+      {name}
+    </NextChakraLinkButton>
   );
 }
 
 function Header() {
-  const { pathname } = useRouter();
-  let isActive = false;
-
+  const router = useRouter();
+  const isRoute = useCallback((asPath) => router.asPath == asPath, [router.asPath]);
   return (
     <Container
       as="nav"
-      p={8}
-      my={{ base: 6, md: 8 }}
+      bg={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,0.6)")}
+      backdropFilter="blur(12px)"
+      d={{ base: "none", md: "block" }}
       position="sticky"
+      px={4}
+      py={8}
       top={0}
       zIndex={10}
-      d={{ base: "none", md: "block" }}
-      background={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,1)")}
-      backdropFilter="saturate(180%) blur(20px)"
     >
       <HStack justify="space-between" w="full">
-        <Link href="/" passHref>
-          <Avatar name="Pravasta Caraka" size="sm" cursor="pointer" />
-        </Link>
+        <HStack></HStack>
         <HStack>
-          {MENU_LINKS.map(({ title, path }) => {
-            if (path !== "/") {
-              const [, group] = path.split("/");
-              isActive = pathname.includes(group);
-            } else {
-              if (path === pathname) isActive = true;
-            }
-            return <HeaderLink href={path} name={title} isActive={isActive} key={title} />;
-          })}
+          {_app_routes.map(({ title, href }) => (
+            <HeaderLink key={title} href={href} name={title} isActive={isRoute(href)} />
+          ))}
         </HStack>
         <ThemeToggle />
       </HStack>
