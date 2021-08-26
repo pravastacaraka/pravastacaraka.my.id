@@ -114,14 +114,7 @@ function AchievementPage({ awards, licenses }) {
   const licensesGroupByYear = arrayGroupBy("year");
   const licensesGroupedByYear = licensesGroupByYear(licenses);
   return (
-    <Stack
-      as="section"
-      minH={{
-        base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 200px)",
-      }}
-      spacing={8}
-    >
+    <Stack as="section" spacing={8}>
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
         <meta name="description" content={pageMeta.description} />
@@ -129,7 +122,7 @@ function AchievementPage({ awards, licenses }) {
 
       <Stack spacing={4} textAlign="center">
         <Heading as="h1">Achievements</Heading>
-        <Text>{pageMeta.description}</Text>
+        <Text lineHeight="tall">{pageMeta.description}</Text>
       </Stack>
 
       <Stack spacing={4}>

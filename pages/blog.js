@@ -7,14 +7,7 @@ function BlogPage({ posts }) {
     description: "Sometimes I write about web development, other times about random interesting stuff.",
   };
   return (
-    <Stack
-      as="section"
-      minH={{
-        base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 200px)",
-      }}
-      spacing={8}
-    >
+    <Stack as="section" spacing={8}>
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
         <meta name="description" content={pageMeta.description} />
@@ -22,14 +15,16 @@ function BlogPage({ posts }) {
 
       <Stack spacing={4} textAlign="center">
         <Heading as="h1">Recent Posts</Heading>
-        <Text as="h2">{pageMeta.description}</Text>
+        <Text as="h2" lineHeight="tall">
+          {pageMeta.description}
+        </Text>
       </Stack>
 
       {posts ? (
         <></>
       ) : (
         <Stack spacing={4} textAlign="center">
-          <Center minH="calc(100vh - var(--chakra-space-32) - 315px)">
+          <Center h="20vh">
             <Text>Don&apos;t have any posts.</Text>
           </Center>
         </Stack>
