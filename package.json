@@ -7,6 +7,8 @@
     "build:static": "npm run build && next export",
     "dev": "next dev",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "prepare": "husky install",
     "sitemap": "next-sitemap --config config/sitemap.config.js",
     "start": "next start"
   },
@@ -31,7 +33,14 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "next-sitemap": "^1.6.162",
     "prettier": "^2.3.2"
+  },
+  "lint-staged": {
+    "*.js": "npm run lint:fix",
+    "*.css": "stylelint --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
