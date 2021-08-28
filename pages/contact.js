@@ -20,14 +20,7 @@ function ContactPage() {
     description: "Are you looking for a discussion partner or someone you can trust to help with your website?",
   };
   return (
-    <Stack
-      as="section"
-      minH={{
-        base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 200px)",
-      }}
-      spacing={8}
-    >
+    <Stack as="section" spacing={8}>
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
         <meta name="description" content={pageMeta.description} />
@@ -38,8 +31,10 @@ function ContactPage() {
       </Stack>
 
       <Stack spacing={4}>
-        <Text as="h2">{pageMeta.description}</Text>
-        <Text>
+        <Text as="h2" lineHeight="tall">
+          {pageMeta.description}
+        </Text>
+        <Text lineHeight="tall">
           If so, I am the right person and open for you to contact. There is no limit to contact me. There are
           several options that you can choose to chat, discuss, or just say hello.
         </Text>
@@ -101,7 +96,7 @@ function ContactPage() {
         <Heading as="h2" fontWeight="semibold" size="lg">
           My Location
         </Heading>
-        <Text>
+        <Text lineHeight="tall">
           I am open if you want to discuss face to face. I am a software developer who lives in the district of
           Gedangan, Sidoarjo, East Java, ID.
         </Text>

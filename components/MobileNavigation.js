@@ -13,7 +13,7 @@ function MobileNavigation() {
     <MotionBox
       initial={false}
       animate={isOpen ? "open" : "close"}
-      position="sticky"
+      position="fixed"
       bottom="0"
       left="0"
       right="0"

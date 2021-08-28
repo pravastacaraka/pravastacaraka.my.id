@@ -43,14 +43,7 @@ function About({ about, knowledges, imgProps }) {
   const tools = knowledges?.filter((knowledge) => knowledge.fields.type === "tool");
   const deployments = knowledges?.filter((knowledge) => knowledge.fields.type === "ci/cd");
   return (
-    <Stack
-      as="section"
-      minH={{
-        base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 200px)",
-      }}
-      spacing={8}
-    >
+    <Stack as="section" spacing={8}>
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
         <meta name="description" content={pageMeta.description} />

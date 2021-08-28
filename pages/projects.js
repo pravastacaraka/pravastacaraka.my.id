@@ -48,14 +48,7 @@ function ProjectsPage({ projects, imgProps }) {
     description: "Here are some of my past works from personal projects and open source ones.",
   };
   return (
-    <Stack
-      as="section"
-      minH={{
-        base: "calc(100vh - var(--chakra-space-32) - 232px)",
-        md: "calc(100vh - var(--chakra-space-32) - 200px)",
-      }}
-      spacing={8}
-    >
+    <Stack as="section" spacing={8}>
       <Head>
         <title>{pageMeta.title} - Pravasta Caraka</title>
         <meta name="description" content={pageMeta.description} />
@@ -63,7 +56,7 @@ function ProjectsPage({ projects, imgProps }) {
 
       <Stack align="center" spacing={4} textAlign="center">
         <Heading as="h1">{pageMeta.title}</Heading>
-        <Text as="h2" pb={8}>
+        <Text as="h2" lineHeight="tall" pb={8}>
           {pageMeta.description}
         </Text>
 
@@ -141,7 +134,14 @@ function ProjectsPage({ projects, imgProps }) {
           </SimpleGrid>
         ) : (
           <Stack spacing={4} textAlign="center">
-            <Center minH="calc(100vh - var(--chakra-space-32) - 315px)">
+            <Center
+              h={{
+                base: "calc(100vh - 30rem)",
+                xs: "calc(100vh - 30rem + 20px)",
+                sm: "calc(100vh - 30rem + 25px)",
+                md: "calc(100vh - 30rem + 2px)",
+              }}
+            >
               <Text>Don&apos;t have any projects.</Text>
             </Center>
           </Stack>

@@ -7,7 +7,12 @@ import profilePic from "../public/static/images/avatar.webp";
 
 function Home() {
   return (
-    <Center as="section" flexDir="column" minH={`calc(100vh - var(--chakra-space-16) - 40px)`}>
+    <Center
+      as="section"
+      flexDir="column"
+      justify="space-evenly"
+      minH={{ md: "calc(100vh - 22.5rem)", xl: "calc(100vh - 8.5rem)" }}
+    >
       <Head>
         <title>Pravasta Caraka</title>
       </Head>
@@ -21,9 +26,14 @@ function Home() {
         <Heading as="h1" size="3xl">
           Hey, I&apos;m Pravasta Caraka.
         </Heading>
-        <Text color={useColorModeValue("gray.600", "gray.400")} fontSize={["lg", "xl"]} maxW="65ch">
-          Web and mobile developer enthusiast. Currently based on Surabaya, Indonesia. You’ve found my personal
-          slice of the internet, while you&apos;re here you can&nbsp;
+        <Text
+          color={useColorModeValue("gray.600", "gray.400")}
+          fontSize={["lg", "xl"]}
+          lineHeight="tall"
+          maxW="65ch"
+        >
+          Web and mobile developer enthusiast. Currently based on Sidoarjo, ID. You’ve found my personal slice of
+          the internet, while you&apos;re here you can&nbsp;
           <NextChakraLink href="/about">learn more about me</NextChakraLink>.
         </Text>
       </Stack>
