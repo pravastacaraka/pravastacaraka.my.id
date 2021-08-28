@@ -134,7 +134,14 @@ function ProjectsPage({ projects, imgProps }) {
           </SimpleGrid>
         ) : (
           <Stack spacing={4} textAlign="center">
-            <Center minH="20vh">
+            <Center
+              h={{
+                base: "calc(100vh - 30rem)",
+                xs: "calc(100vh - 30rem + 20px)",
+                sm: "calc(100vh - 30rem + 25px)",
+                md: "calc(100vh - 30rem + 2px)",
+              }}
+            >
               <Text>Don&apos;t have any projects.</Text>
             </Center>
           </Stack>
