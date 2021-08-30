@@ -2,6 +2,7 @@ import MobileMenuButton from "@app-components/mobile-menu/mobile-menu-button";
 import MobileMenuToggle from "@app-components/mobile-menu/mobile-menu-toggle";
 import { Box, Grid, useColorModeValue } from "@chakra-ui/react";
 import { motion, useCycle } from "framer-motion";
+import Link from "next/link";
 import { HiHome } from "react-icons/hi";
 import { ThemeToggle } from "./Button";
 
@@ -29,7 +30,9 @@ function MobileNavigation() {
         borderTopColor={useColorModeValue("gray.100", "gray.800")}
         shadow="0 -2px 10px 0 rgba(0, 0, 0, 0.035)"
       >
-        <MobileMenuButton label="Home" icon={HiHome} />
+        <Link href="/" passHref>
+          <MobileMenuButton label="Home" icon={HiHome} />
+        </Link>
         <MobileMenuToggle onClick={() => toggleOpen()} />
         <ThemeToggle mobile />
       </Grid>
