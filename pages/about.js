@@ -82,7 +82,7 @@ function About({ about, knowledges, imgProps }) {
       <Stack as="section" flexDir="column" spacing={8}>
         <Stack lineHeight="tall" spacing={4}>
           <ReactMarkdown components={BaseMarkdown}>
-            You can reach out via email at [raka@pravastacaraka.my.id](mailto:raka@pravastacaraka.my.id), or via
+            You can reach out via email at [hello@pravastacaraka.my.id](mailto:hello@pravastacaraka.my.id), or via
             socials below.
           </ReactMarkdown>
         </Stack>

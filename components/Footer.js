@@ -5,7 +5,7 @@ import { NextChakraLink, NextChakraLinkIconButton } from "./NextChakraLink";
 const footerSocials = [
   {
     name: "Email",
-    href: "mailto:raka@pravastacaraka.my.id",
+    href: "mailto:hello@pravastacaraka.my.id",
     icon: FaEnvelope,
   },
   {

@@ -17,7 +17,7 @@ $ npm run dev # or yarn dev
 
 ## Question or feedback
 
-Do you have questions or feedback? Then the reach out to me on [Email](mailto:raka@pravastacaraka.my.id), [Facebook](https://facebook.com/pravastacaraka), [Twitter](https://twitter.com/pravastacaraka), or [LinkedIn](https://www.linkedin.com/in/pravastacaraka).
+Do you have questions or feedback? Then the reach out to me on [Email](mailto:hello@pravastacaraka.my.id), [Facebook](https://facebook.com/pravastacaraka), [Twitter](https://twitter.com/pravastacaraka), or [LinkedIn](https://www.linkedin.com/in/pravastacaraka).
 
 ## License
 
