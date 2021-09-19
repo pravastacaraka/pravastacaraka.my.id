@@ -27,7 +27,7 @@
     "react-hook-form": "7.15.3",
     "react-icons": "4.2.0",
     "react-markdown": "7.0.1",
-    "sharp": "0.29.0"
+    "sharp": "0.29.1"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
