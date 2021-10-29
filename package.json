@@ -17,7 +17,7 @@
     "@emotion/react": "11.5.0",
     "@emotion/styled": "11.3.0",
     "@fontsource/inter": "4.5.0",
-    "@plaiceholder/next": "2.1.0",
+    "@plaiceholder/next": "2.2.0",
     "airtable": "0.11.1",
     "framer-motion": "4.1.17",
     "next": "11.1.2",
