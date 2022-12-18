@@ -13,13 +13,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.6.10",
+    "@chakra-ui/react": "1.8.9",
     "@emotion/react": "11.5.0",
     "@emotion/styled": "11.3.0",
     "@fontsource/inter": "4.5.14",
     "@plaiceholder/next": "2.5.0",
     "airtable": "0.11.6",
-    "framer-motion": "4.1.17",
+    "framer-motion": "6.5.1",
     "next": "12.3.4",
     "plaiceholder": "2.5.0",
     "react": "17.0.2",
