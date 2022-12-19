@@ -12,7 +12,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 function ProjectCard({ name, desc, type, img, stack, demo_url }) {
   const getTypeColor = (type) => {
@@ -28,7 +28,7 @@ function ProjectCard({ name, desc, type, img, stack, demo_url }) {
     <ChakraLink w="full" href={demo_url} _hover={{ color: "inherit" }} _focus={{ border: "none" }} isExternal>
       <Box
         p={{ base: 0, md: 2 }}
-        d={{ base: "block", md: "flex" }}
+        display={{ base: "block", md: "flex" }}
         borderWidth="1px"
         borderColor={useColorModeValue("gray.100", "gray.700")}
         rounded={{ base: "lg" }}
@@ -99,7 +99,7 @@ function KnowledgeCard({ data, label }) {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <title>{item.fields.name}</title>
+                <title>{`${item.fields.name}`}</title>
                 <path d={item.fields.icon} />
               </chakra.svg>
               <Text noOfLines={1}>{item.fields.name}</Text>

@@ -1,6 +1,6 @@
 import { ButtonGroup, Container, HStack, Icon, Link, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { NextChakraLink, NextChakraLinkIconButton } from "./NextChakraLink";
+import { NextChakraLinkIconButton } from "./NextChakraLink";
 
 const footerSocials = [
   {
@@ -77,8 +77,8 @@ function Footer() {
           <Text>MIT License © {date} Pravasta Caraka Bramastagiri</Text>
         </Stack>
         <HStack spacing={4}>
-          <NextChakraLink href="/disclaimer">Disclaimer</NextChakraLink>
-          <NextChakraLink href="/privacy">Privacy</NextChakraLink>
+          <Link href="/disclaimer">Disclaimer</Link>
+          <Link href="/privacy">Privacy</Link>
         </HStack>
       </Stack>
     </Container>

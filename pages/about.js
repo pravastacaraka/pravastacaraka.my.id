@@ -3,7 +3,7 @@ import { BaseMarkdown } from "@app-components/markdown";
 import { getTable } from "@app-libs/airtable";
 import { AspectRatio, SimpleGrid, Stack } from "@chakra-ui/react";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { getPlaiceholder } from "plaiceholder";
 import ReactMarkdown from "react-markdown";
 
@@ -45,7 +45,7 @@ function About({ about, knowledges, imgProps }) {
   return (
     <Stack as="section" spacing={8}>
       <Head>
-        <title>{pageMeta.title} - Pravasta Caraka</title>
+        <title>{`${pageMeta.title} - Pravasta Caraka`}</title>
         <meta name="description" content={pageMeta.description} />
       </Head>
 

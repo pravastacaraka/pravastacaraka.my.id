@@ -1,7 +1,7 @@
 import { NextChakraLink, NextChakraLinkButton } from "@app-components/NextChakraLink";
 import { Box, Center, Heading, HStack, Icon, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import profilePic from "../public/static/images/avatar.webp";
 
