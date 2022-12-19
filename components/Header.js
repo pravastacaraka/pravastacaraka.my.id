@@ -33,7 +33,7 @@ function Header() {
       as="nav"
       bg={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,0.6)")}
       backdropFilter="blur(12px)"
-      d={{ base: "none", md: "block" }}
+      display={{ base: "none", md: "block" }}
       position="sticky"
       px={4}
       py={8}

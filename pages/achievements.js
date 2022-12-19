@@ -116,7 +116,7 @@ function AchievementPage({ awards, licenses }) {
   return (
     <Stack as="section" spacing={8}>
       <Head>
-        <title>{pageMeta.title} - Pravasta Caraka</title>
+        <title>{`${pageMeta.title} - Pravasta Caraka`}</title>
         <meta name="description" content={pageMeta.description} />
       </Head>
 

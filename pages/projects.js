@@ -13,7 +13,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { getPlaiceholder } from "plaiceholder";
 
 export async function getStaticProps() {
@@ -50,7 +50,7 @@ function ProjectsPage({ projects, imgProps }) {
   return (
     <Stack as="section" spacing={8}>
       <Head>
-        <title>{pageMeta.title} - Pravasta Caraka</title>
+        <title>{`${pageMeta.title} - Pravasta Caraka`}</title>
         <meta name="description" content={pageMeta.description} />
       </Head>
 

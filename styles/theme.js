@@ -1,22 +1,17 @@
-import { extendTheme, theme as defaultTheme } from "@chakra-ui/react";
-import { createBreakpoints, mode } from "@chakra-ui/theme-tools";
+import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
-const breakpoints = createBreakpoints({
+const breakpoints = {
   xs: "375px",
   sm: "640px",
   md: "768px",
   lg: "1024px",
   xl: "1280px",
-});
+};
 
 const config = {
   useSystemColorMode: false,
   initialColorMode: "light",
-};
-
-const fonts = {
-  body: `'Inter', ${defaultTheme.fonts.body}`,
-  heading: `'Inter', ${defaultTheme.fonts.heading}`,
 };
 
 const styles = {
@@ -36,7 +31,6 @@ const styles = {
 const customTheme = extendTheme({
   breakpoints,
   config,
-  fonts,
   styles,
   components: {
     Container: {
