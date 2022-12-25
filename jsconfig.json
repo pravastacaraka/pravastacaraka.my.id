@@ -10,9 +10,10 @@
       "@app-components/*": ["components/*"],
       "@app-config/*": ["config/*"],
       "@app-pages/*": ["pages/*"],
-      "@app-shared/*": ["shared/*"],
       "@app-libs/*": ["libs/*"],
-      "@app-styles/*": ["styles/*"]
+      "@app-styles/*": ["styles/*"],
+      "@app-helper/*": ["helper/*"],
+      "@app-providers/*": ["providers/*"]
     }
   },
   "exclude": ["dist", "node_modules", "build", ".vscode", ".next", "coverage", ".npm", ".yarn"],

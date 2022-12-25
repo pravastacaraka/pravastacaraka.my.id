@@ -1,13 +1,23 @@
 import { ThemeToggle } from "@app-components/Button";
 import { _app_routes } from "@app-config/app.config";
 import { Container, HStack, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { NextChakraLinkButton } from "./NextChakraLink";
 
-function HeaderLink({ name, href, isActive }) {
+function HeaderLink({ children, href }) {
+  const pathname = usePathname();
+  let isActive = false;
+
+  if (href !== "/") {
+    const [, group] = href.split("/");
+    isActive = pathname.includes(group);
+  } else {
+    if (href === pathname) isActive = true;
+  }
+
   const { colorMode } = useColorMode();
-  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "#2756a3") : undefined;
+  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "blue.600") : undefined;
+
   return (
     <NextChakraLinkButton
       href={href}
@@ -16,18 +26,16 @@ function HeaderLink({ name, href, isActive }) {
       variant="ghost"
       _hover={{
         bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-        color: textColor,
         transform: "scale(1.05)",
+        textDecoration: "none",
       }}
     >
-      {name}
+      {children}
     </NextChakraLinkButton>
   );
 }
 
 function Header() {
-  const router = useRouter();
-  const isRoute = useCallback((asPath) => router.asPath == asPath, [router.asPath]);
   return (
     <Container
       as="nav"
@@ -44,7 +52,9 @@ function Header() {
         <HStack></HStack>
         <HStack>
           {_app_routes.map(({ title, href }) => (
-            <HeaderLink key={title} href={href} name={title} isActive={isRoute(href)} />
+            <HeaderLink key={title} href={href}>
+              {title}
+            </HeaderLink>
           ))}
         </HStack>
         <ThemeToggle />

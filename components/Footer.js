@@ -1,6 +1,6 @@
-import { ButtonGroup, Container, HStack, Icon, Link, Stack, Text } from "@chakra-ui/react";
+import { ButtonGroup, Container, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { NextChakraLinkIconButton } from "./NextChakraLink";
+import { NextChakraLink, NextChakraLinkIconButton } from "./NextChakraLink";
 
 const footerSocials = [
   {
@@ -38,7 +38,7 @@ const footerSocials = [
 function Footer() {
   const date = new Date().getFullYear();
   return (
-    <Container as="footer" mb={{ base: "calc(60px - var(--chakra-space-4))", md: 0 }} px={4} py={8}>
+    <Container as="footer" mb={{ base: "60px", md: 0 }} px={4} py={8}>
       <Stack align="center" color="gray.500" textAlign="center">
         <ButtonGroup>
           {footerSocials.map((social) => (
@@ -58,27 +58,27 @@ function Footer() {
         <Stack spacing={0}>
           <Text>
             Made using&nbsp;
-            <Link href="https://nextjs.org" isExternal>
+            <NextChakraLink href="https://nextjs.org" isExternal>
               Next.js
-            </Link>
+            </NextChakraLink>
             ,&nbsp;
-            <Link href="https://chakra-ui.com" isExternal>
+            <NextChakraLink href="https://chakra-ui.com" isExternal>
               Chakra UI
-            </Link>
+            </NextChakraLink>
             , and&nbsp;
-            <Link href="https://airtable.com" isExternal>
+            <NextChakraLink href="https://airtable.com" isExternal>
               Airtable
-            </Link>
+            </NextChakraLink>
             . Hosted in&nbsp;
-            <Link href="https://vercel.com" isExternal>
+            <NextChakraLink href="https://vercel.com" isExternal>
               Vercel
-            </Link>
+            </NextChakraLink>
           </Text>
           <Text>MIT License © {date} Pravasta Caraka Bramastagiri</Text>
         </Stack>
         <HStack spacing={4}>
-          <Link href="/disclaimer">Disclaimer</Link>
-          <Link href="/privacy">Privacy</Link>
+          <NextChakraLink href="/disclaimer">Disclaimer</NextChakraLink>
+          <NextChakraLink href="/privacy">Privacy</NextChakraLink>
         </HStack>
       </Stack>
     </Container>

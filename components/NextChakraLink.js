@@ -1,20 +1,19 @@
-import { Button, IconButton, Link as ChakraLink } from "@chakra-ui/react";
+import { Button, IconButton, Link as ChakraLink } from "@app-providers/chakra-ui";
 import NextLink from "next/link";
 
 // has to be a new component because both chakra and next share the `as` keyword
 const NextChakraLink = ({ href, as, replace, scroll, shallow, prefetch, isExternal = false, ...chakraProps }) => {
   return (
-    <NextLink
+    <ChakraLink
+      as={NextLink}
       href={href}
-      as={as}
       replace={replace}
       scroll={scroll}
       shallow={shallow}
       prefetch={prefetch}
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
-    >
-      <ChakraLink as="button" {...chakraProps} />
-    </NextLink>
+      {...chakraProps}
+    />
   );
 };
 
@@ -29,20 +28,17 @@ const NextChakraLinkButton = ({
   ...chakraProps
 }) => {
   return (
-    <NextLink
+    <Button
+      as={NextLink}
       href={href}
-      as={as}
       replace={replace}
       scroll={scroll}
       shallow={shallow}
       prefetch={prefetch}
+      transition="transform .3s cubic-bezier(.175,.885,.32,1.275), border-color .2s cubic-bezier(.39,.575,.565,1), background-color .2s cubic-bezier(.39,.575,.565,1)"
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
-    >
-      <Button
-        transition="transform .3s cubic-bezier(.175,.885,.32,1.275), border-color .2s cubic-bezier(.39,.575,.565,1), background-color .2s cubic-bezier(.39,.575,.565,1)"
-        {...chakraProps}
-      />
-    </NextLink>
+      {...chakraProps}
+    />
   );
 };
 
@@ -57,21 +53,18 @@ const NextChakraLinkIconButton = ({
   ...chakraProps
 }) => {
   return (
-    <NextLink
+    <IconButton
+      as={NextLink}
       href={href}
-      as={as}
       replace={replace}
       scroll={scroll}
       shallow={shallow}
       prefetch={prefetch}
+      variant="ghost"
+      transition="transform .3s cubic-bezier(.175,.885,.32,1.275), border-color .2s cubic-bezier(.39,.575,.565,1), background-color .2s cubic-bezier(.39,.575,.565,1)"
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
-    >
-      <IconButton
-        transition="transform .3s cubic-bezier(.175,.885,.32,1.275), border-color .2s cubic-bezier(.39,.575,.565,1), background-color .2s cubic-bezier(.39,.575,.565,1)"
-        variant="ghost"
-        {...chakraProps}
-      />
-    </NextLink>
+      {...chakraProps}
+    />
   );
 };
 

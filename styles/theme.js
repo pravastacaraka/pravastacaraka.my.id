@@ -1,5 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import { Inter } from "@next/font/google";
+
+const inter = Inter();
 
 const breakpoints = {
   xs: "375px",
@@ -10,7 +13,6 @@ const breakpoints = {
 };
 
 const config = {
-  useSystemColorMode: false,
   initialColorMode: "light",
 };
 
@@ -24,6 +26,7 @@ const styles = {
       color: mode("black", "white")(props),
       bg: mode("white", "black")(props),
       transition: "none",
+      ...inter.style,
     },
   }),
 };
@@ -42,17 +45,19 @@ const customTheme = extendTheme({
     },
     Heading: {
       baseStyle: {
-        fontWeight: 800,
         letterSpacing: "tighter",
+        fontWeight: 800,
+        ...inter.style,
       },
     },
     Link: {
       baseStyle: (props) => ({
-        color: mode("#2756a3", "yellow.200")(props),
+        color: mode("blue.600", "yellow.200")(props),
         fontWeight: "500",
+        borderBottom: "dotted",
         _hover: {
-          color: mode("#2756a3", "yellow.200")(props),
-          textDecoration: "underline",
+          textDecoration: "none",
+          color: mode("blue.500", "yellow.100")(props),
         },
       }),
     },
