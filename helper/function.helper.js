@@ -11,6 +11,9 @@ function hexToRGB(hex, alpha) {
 
 function arrayGroupBy(key) {
   return function group(array) {
+    if (array == undefined) {
+      return;
+    }
     return array.reduce((acc, obj) => {
       const property = obj[key];
       acc[property] = acc[property] || [];
