@@ -26,7 +26,9 @@ function MobileMenuToggle() {
             <DrawerBody pb={4}>
               <VStack>
                 {_app_routes.map(({ title, href }) => (
-                  <MobileMenuItem key={title} title={title} href={href} />
+                  <MobileMenuItem key={title} href={href}>
+                    {title}
+                  </MobileMenuItem>
                 ))}
               </VStack>
             </DrawerBody>
