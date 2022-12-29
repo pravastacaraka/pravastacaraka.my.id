@@ -8,7 +8,7 @@ const base = new Airtable({
 const minifyRecord = (record) => {
   return {
     id: record.id,
-    fields: record.fields,
+    ...record.fields,
   };
 };
 

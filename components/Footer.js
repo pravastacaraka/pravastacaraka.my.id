@@ -1,4 +1,4 @@
-import { ButtonGroup, Container, HStack, Icon, Stack, Text } from "@chakra-ui/react";
+import { ButtonGroup, Container, HStack, Stack, Text } from "@app-providers/chakra-ui";
 import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { NextChakraLink, NextChakraLinkIconButton } from "./NextChakraLink";
 
@@ -39,38 +39,34 @@ function Footer() {
   const date = new Date().getFullYear();
   return (
     <Container as="footer" mb={{ base: "60px", md: 0 }} px={4} py={8}>
-      <Stack align="center" color="gray.500" textAlign="center">
+      <Stack align="center" textAlign="center">
         <ButtonGroup>
           {footerSocials.map((social) => (
             <NextChakraLinkIconButton
               key={social.name}
               href={social.href}
               aria-label={social.name}
-              color="gray.500"
-              icon={<Icon as={social.icon} />}
-              _hover={{
-                transform: "scale(1.05)",
-              }}
-              isExternal
+              icon={<social.icon />}
+              isExternal={true}
             />
           ))}
         </ButtonGroup>
         <Stack spacing={0}>
           <Text>
             Made using&nbsp;
-            <NextChakraLink href="https://nextjs.org" isExternal>
+            <NextChakraLink href="https://nextjs.org" isExternal={true}>
               Next.js
             </NextChakraLink>
             ,&nbsp;
-            <NextChakraLink href="https://chakra-ui.com" isExternal>
+            <NextChakraLink href="https://chakra-ui.com" isExternal={true}>
               Chakra UI
             </NextChakraLink>
             , and&nbsp;
-            <NextChakraLink href="https://airtable.com" isExternal>
+            <NextChakraLink href="https://airtable.com" isExternal={true}>
               Airtable
             </NextChakraLink>
             . Hosted in&nbsp;
-            <NextChakraLink href="https://vercel.com" isExternal>
+            <NextChakraLink href="https://vercel.com" isExternal={true}>
               Vercel
             </NextChakraLink>
           </Text>

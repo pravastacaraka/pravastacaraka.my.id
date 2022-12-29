@@ -1,4 +1,5 @@
-import MobileMenuItem from "@app-components/mobile-menu/mobile-menu-item";
+"use client";
+
 import { _app_routes } from "@app-config/app.config";
 import {
   Drawer,
@@ -9,9 +10,10 @@ import {
   DrawerOverlay,
   useDisclosure,
   VStack,
-} from "@chakra-ui/react";
+} from "@app-providers/chakra-ui";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import MobileMenuButton from "./mobile-menu-button";
+import MobileMenuItem from "./mobile-menu-item";
 
 function MobileMenuToggle() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -22,7 +24,7 @@ function MobileMenuToggle() {
         <DrawerOverlay>
           <DrawerContent borderTopRadius={6}>
             <DrawerCloseButton />
-            <DrawerHeader>Menu</DrawerHeader>
+            <DrawerHeader fontSize="18px">Menu</DrawerHeader>
             <DrawerBody pb={4}>
               <VStack>
                 {_app_routes.map(({ title, href }) => (

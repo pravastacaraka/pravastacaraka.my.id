@@ -1,16 +1,14 @@
 import {
   AspectRatio,
   Box,
-  chakra,
   Heading,
   HStack,
+  Icon,
   LinkBox,
   LinkOverlay,
-  SkeletonText,
   Stack,
   Tag,
   Text,
-  useColorModeValue,
   Wrap,
   WrapItem,
 } from "@app-providers/chakra-ui";
@@ -85,37 +83,26 @@ function ProjectCard({ project }) {
   );
 }
 
-function KnowledgeCard({ data, label, isError, isLoading }) {
+function KnowledgeCard({ data, label }) {
   return (
     <Box>
       <Heading mb={4} size="md" letterSpacing="tighter" fontWeight="600">
         {label}
       </Heading>
-
-      <Box color={useColorModeValue("gray.600", "gray.400")}>
-        {isError || isLoading ? (
-          <SkeletonText noOfLines={5} skeletonHeight="16px" speed={1.2} />
-        ) : (
-          <Wrap fontSize="sm" spacing={1}>
-            {data?.map((item) => (
-              <WrapItem key={item.id}>
-                <HStack w={{ base: "110px", md: "120px" }}>
-                  <chakra.svg
-                    boxSize={4}
-                    fill="currentcolor"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title>{`${item.fields.name}`}</title>
-                    <path d={item.fields.icon} />
-                  </chakra.svg>
-                  <Text noOfLines={1}>{item.fields.name}</Text>
-                </HStack>
-              </WrapItem>
-            ))}
-          </Wrap>
-        )}
+      <Box>
+        <Wrap fontSize="sm" spacing={1}>
+          {data.map((item) => (
+            <WrapItem key={item.id}>
+              <HStack w={{ base: "110px", md: "120px" }}>
+                <Icon boxSize={4} fill="currentcolor" role="img" viewBox="0 0 24 24">
+                  <title>{`${item.name}`}</title>
+                  <path d={item.icon} />
+                </Icon>
+                <Text noOfLines={1}>{item.name}</Text>
+              </HStack>
+            </WrapItem>
+          ))}
+        </Wrap>
       </Box>
     </Box>
   );

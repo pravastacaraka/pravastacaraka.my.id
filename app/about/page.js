@@ -1,93 +1,97 @@
-"use client";
-
 import { KnowledgeCard } from "@app-components/Card";
-import { BaseMarkdown } from "@app-components/markdown";
-import { AspectRatio, SimpleGrid, Skeleton, SkeletonText, Stack } from "@chakra-ui/react";
-import { useGetAbout, useGetKnowledge } from "helper/api.helper";
+import { CustomReactMarkdown } from "@app-components/markdown";
+import { AspectRatio, SimpleGrid } from "@app-providers/chakra-ui";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import { getPlaiceholder } from "plaiceholder";
 
-function Page() {
-  const { about, aboutError, aboutLoading } = useGetAbout();
-  const { knowledge, knowledgeError, knowledgeLoading } = useGetKnowledge();
+async function fetchAboutData() {
+  const res = await fetch(`https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/About%20Me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+    },
+    next: { revalidate: 60 },
+  });
 
-  const languages = knowledge?.data?.filter((val) => val.fields.type === "language");
-  const frameworks = knowledge?.data?.filter((val) => val.fields.type === "framework");
-  const databases = knowledge?.data?.filter((val) => val.fields.type === "database");
-  const cms = knowledge?.data?.filter((val) => val.fields.type === "cms");
-  const tools = knowledge?.data?.filter((val) => val.fields.type === "tool");
-  const deployments = knowledge?.data?.filter((val) => val.fields.type === "ci/cd");
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const json = await res.json();
+
+  const records = await Promise.all(
+    json.records.map(async (record) => {
+      const { base64, img } = await getPlaiceholder(record.fields.cover_im[0]?.url);
+      record.fields.cover_im = { src: img.src, type: img.type, blurDataURL: base64 };
+      return { id: record.id, ...record.fields };
+    })
+  ).then((values) => values);
+
+  return records[0];
+}
+
+async function fetchKnowledgeData() {
+  const res = await fetch(`https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Knowledge%20Base`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+    },
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const json = await res.json();
+
+  const records = json.records.map((record) => {
+    return { id: record.id, ...record.fields };
+  });
+
+  return records;
+}
+
+async function Page() {
+  const aboutData = await fetchAboutData();
+  const knowledgeData = await fetchKnowledgeData();
+
+  const languages = knowledgeData.filter((val) => val.type === "language");
+  const frameworks = knowledgeData.filter((val) => val.type === "framework");
+  const databases = knowledgeData.filter((val) => val.type === "database");
+  const cms = knowledgeData.filter((val) => val.type === "cms");
+  const tools = knowledgeData.filter((val) => val.type === "tool");
+  const deployments = knowledgeData.filter((val) => val.type === "ci/cd");
 
   return (
-    <Stack as="section" spacing={8}>
+    <>
       <AspectRatio ratio={16 / 9} w="full">
-        {aboutLoading || aboutError ? (
-          <Skeleton speed={1.2} />
-        ) : (
-          <Image
-            alt="Picture of the Author"
-            placeholder="blur"
-            quality={100}
-            style={{ objectFit: "cover" }}
-            {...about.data.aboutPic}
-            fill
-          />
-        )}
+        <Image
+          alt="Picture of the Author"
+          placeholder="blur"
+          quality={100}
+          style={{ objectFit: "cover" }}
+          fill={true}
+          {...aboutData.cover_im}
+        />
       </AspectRatio>
 
-      <Stack lineHeight="tall" spacing={4}>
-        {aboutLoading || aboutError ? (
-          <SkeletonText noOfLines={16} skeletonHeight="16px" speed={1.2} />
-        ) : (
-          <ReactMarkdown components={BaseMarkdown}>{about.data.about.fields.long_desc}</ReactMarkdown>
-        )}
-      </Stack>
+      <CustomReactMarkdown>{aboutData.long_desc}</CustomReactMarkdown>
 
-      {/* <Heading as="h1" size="lg" id="skills">
-          Knowledge Base
-        </Heading> */}
-      <Stack lineHeight="tall" spacing={4}>
-        {/* <ReactMarkdown components={BaseMarkdown}>
-            After a few years of being a computer engineering student and also learning something new on my own, I
-            have a wide range of skills and knowledge about software development.
-          </ReactMarkdown> */}
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={8} w="full">
-          <KnowledgeCard
-            data={languages}
-            label="Languages"
-            isError={knowledgeError}
-            isLoading={knowledgeLoading}
-          />
-          <KnowledgeCard
-            data={frameworks}
-            label="Frameworks"
-            isError={knowledgeError}
-            isLoading={knowledgeLoading}
-          />
-          <KnowledgeCard
-            data={databases}
-            label="Databases"
-            isError={knowledgeError}
-            isLoading={knowledgeLoading}
-          />
-          <KnowledgeCard data={cms} label="Headless CMS" isError={knowledgeError} isLoading={knowledgeLoading} />
-          <KnowledgeCard
-            data={deployments}
-            label="Deployments"
-            isError={knowledgeError}
-            isLoading={knowledgeLoading}
-          />
-          <KnowledgeCard data={tools} label="Tools" />
-        </SimpleGrid>
-      </Stack>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={8} w="full" py={4}>
+        <KnowledgeCard data={languages} label="Languages" />
+        <KnowledgeCard data={frameworks} label="Frameworks" />
+        <KnowledgeCard data={databases} label="Databases" />
+        <KnowledgeCard data={cms} label="Headless CMS" />
+        <KnowledgeCard data={deployments} label="Deployments" />
+        <KnowledgeCard data={tools} label="Tools" />
+      </SimpleGrid>
 
-      <Stack lineHeight="tall" spacing={4}>
-        <ReactMarkdown components={BaseMarkdown}>
-          You can reach out via email at [hello@pravastacaraka.my.id](mailto:hello@pravastacaraka.my.id), or via
-          socials below.
-        </ReactMarkdown>
-      </Stack>
-    </Stack>
+      <CustomReactMarkdown>
+        You can reach out via email at [hello@pravastacaraka.my.id](mailto:hello@pravastacaraka.my.id), or via
+        socials below.
+      </CustomReactMarkdown>
+    </>
   );
 }
 

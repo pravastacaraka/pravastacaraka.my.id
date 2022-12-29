@@ -2,99 +2,77 @@
 
 import { Button } from "@app-components/Button";
 import { NextChakraLink } from "@app-components/NextChakraLink";
-import { useGetLicenses } from "@app-helper/api.helper";
 import { arrayGroupBy } from "@app-helper/function.helper";
-import {
-  Box,
-  Divider,
-  Flex,
-  Heading,
-  Icon,
-  List,
-  ListItem,
-  SkeletonText,
-  Stack,
-  Text,
-} from "@app-providers/chakra-ui";
+import { Divider, Flex, Heading, Icon, List, ListItem, Stack, Text } from "@app-providers/chakra-ui";
 import { useBoolean, useColorModeValue } from "@chakra-ui/react";
 import { HiOutlineBadgeCheck, HiOutlineChevronDown, HiOutlineChevronUp, HiOutlineNewspaper } from "react-icons/hi";
 
-function loadingSkeleton() {
-  return (
-    <Stack spacing={4}>
-      <SkeletonText noOfLines={1} skeletonHeight="21px" width="40px" />
-      <SkeletonText noOfLines={3} skeletonHeight="21px" />
-      <SkeletonText noOfLines={3} skeletonHeight="21px" />
-      <SkeletonText noOfLines={3} skeletonHeight="21px" />
-    </Stack>
-  );
-}
-
-function Licenses() {
+function Licenses({ data }) {
+  let countLicense = 0;
   const [showLicenses, setShowLicenses] = useBoolean();
-  const { liColor } = useColorModeValue("gray.600", "gray.400");
-  const { iconColor } = useColorModeValue("green.600", "yellow.200");
-  const { textColor } = useColorModeValue("green.900", "gray.100");
+  const iconColor = useColorModeValue("blue.600", "yellow.200");
 
-  const { licenses, licensesError, licensesLoading } = useGetLicenses();
-
-  if (licensesError) return <div>Oh no! Something went wrong, please try again!</div>;
-  if (licensesLoading) return loadingSkeleton();
+  if (!data || data?.length < 1) return <Text>Don&apos;t have any certifications.</Text>;
 
   const licensesGroupByYear = arrayGroupBy("year");
-  const licensesGroupedByYear = licensesGroupByYear(licenses.data);
+  const licensesGroupedByYear = licensesGroupByYear(data);
 
-  return licensesGroupedByYear ? (
-    <>
-      <Stack spacing={4} {...(showLicenses ? undefined : { maxH: "550px", overflow: "hidden" })}>
-        {Object.keys(licensesGroupedByYear)
-          .reverse()
-          .map((year, yearIdx) => {
-            return (
-              <Box key={year}>
-                <Heading
-                  as="h3"
-                  fontSize={{ base: "lg", md: "xl" }}
-                  fontWeight="semibold"
-                  letterSpacing="tight"
-                  mb={4}
-                >
+  return (
+    <Flex direction="column">
+      {Object.keys(licensesGroupedByYear)
+        .reverse()
+        .map((year, yearIdx) => {
+          let showDivider = true;
+
+          if (countLicense >= 5 && !showLicenses) {
+            return;
+          }
+
+          return (
+            <>
+              <Stack key={year} spacing={4}>
+                <Heading as="h3" fontSize={{ base: "lg", md: "xl" }} fontWeight="semibold">
                   {year}
                 </Heading>
                 <List>
-                  {licensesGroupedByYear[year].map((license) => (
-                    <ListItem key={license.id} color={liColor} mb={4} ml={2}>
-                      <Flex align="center" mb={2}>
-                        <Icon as={HiOutlineBadgeCheck} color={iconColor} mr={2} />
-                        <Text fontWeight="medium" color={textColor}>
-                          {license.title}
-                        </Text>
-                      </Flex>
-                      <Text fontSize="sm" mb={2} ml={6} noOfLines={2}>
-                        {license.desc}
-                      </Text>
-                      {license.news_url && (
-                        <Flex align="center" fontSize="sm" ml={6} noOfLines={1}>
-                          <Icon as={HiOutlineNewspaper} mr={2} />
-                          <NextChakraLink href={license.news_url} isExternal>
-                            {license.news_url}
-                          </NextChakraLink>
+                  {licensesGroupedByYear[year].map((license) => {
+                    if (countLicense >= 5 && !showLicenses) {
+                      showDivider = false;
+                      return;
+                    }
+
+                    countLicense++;
+
+                    return (
+                      <ListItem key={license.id} mb={4} ml={2}>
+                        <Flex align="center" mb={2}>
+                          <Icon as={HiOutlineBadgeCheck} color={iconColor} mr={2} />
+                          <Text fontWeight="semibold">{license.title}</Text>
                         </Flex>
-                      )}
-                    </ListItem>
-                  ))}
+                        <Text fontSize={{ base: "xs", md: "sm" }} mb={2} ml={6} noOfLines={2}>
+                          {license.desc}
+                        </Text>
+                        {license.news_url && (
+                          <Flex align="center" fontSize={{ base: "xs", md: "sm" }} ml={6} noOfLines={1}>
+                            <Icon as={HiOutlineNewspaper} mr={2} />
+                            <NextChakraLink href={license.news_url} isExternal>
+                              {license.news_url}
+                            </NextChakraLink>
+                          </Flex>
+                        )}
+                      </ListItem>
+                    );
+                  })}
                 </List>
-                {Object.keys(licensesGroupedByYear).length - 1 !== yearIdx && <Divider mb={2} />}
-              </Box>
-            );
-          })}
-      </Stack>
+              </Stack>
+              {showDivider && Object.keys(licensesGroupedByYear).length - 1 !== yearIdx && <Divider mb={4} />}
+            </>
+          );
+        })}
       {showLicenses ? (
         <Button
           variant="ghost"
           rightIcon={<Icon as={HiOutlineChevronUp} />}
-          fontWeight="medium"
-          mt={4}
           mx="auto"
           onClick={setShowLicenses.toggle}
         >
@@ -104,17 +82,13 @@ function Licenses() {
         <Button
           variant="ghost"
           rightIcon={<Icon as={HiOutlineChevronDown} />}
-          fontWeight="medium"
-          mt={4}
           mx="auto"
           onClick={setShowLicenses.toggle}
         >
           See More
         </Button>
       )}
-    </>
-  ) : (
-    <Text>Don&apos;t have any certifications.</Text>
+    </Flex>
   );
 }
 

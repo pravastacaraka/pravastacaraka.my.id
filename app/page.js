@@ -1,13 +1,10 @@
-"use client";
-
 import { NextChakraLink, NextChakraLinkButton } from "@app-components/NextChakraLink";
-import { Box, Center, Heading, HStack, Icon, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Heading, HStack, Stack, Text } from "@app-providers/chakra-ui";
 import Image from "next/image";
-import Link from "next/link";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import profilePic from "../public/static/images/avatar.webp";
 
-function Page() {
+function Home() {
   return (
     <Center
       as="section"
@@ -22,10 +19,10 @@ function Page() {
       </Box>
 
       <Stack align="center" textAlign="center" spacing={4} mb={10}>
-        <Heading as="h1" size="3xl">
+        <Heading as="h1" size={{ base: "xl", sm: "2xl", md: "3xl" }}>
           Hey, I&apos;m Pravasta Caraka.
         </Heading>
-        <Text color={useColorModeValue("gray.600", "gray.400")} fontSize={["lg", "xl"]} lineHeight="tall">
+        <Text>
           Software Engineer at&nbsp;
           <NextChakraLink href="https://www.tokopedia.com" isExternal>
             PT Tokopedia
@@ -39,37 +36,15 @@ function Page() {
 
       <HStack justify="center" spacing={3}>
         <NextChakraLinkButton
-          as={Link}
-          href="http://link.pravastacaraka.my.id/resume"
-          target="_blank"
-          rel="noopener noreferrer"
-          minW={{ md: 40 }}
-          rightIcon={<Icon as={HiOutlineDocumentDownload} />}
           variant="outline"
-          _hover={{
-            borderColor: useColorModeValue("black", "white"),
-            transform: "scale(1.05)",
-            textDecoration: "none",
-          }}
+          href="http://link.pravastacaraka.my.id/resume"
+          minW={{ md: 40 }}
+          rightIcon={<HiOutlineDocumentDownload />}
+          isExternal={true}
         >
           My Resume
         </NextChakraLinkButton>
-        <NextChakraLinkButton
-          as={Link}
-          href="/contact"
-          bg={useColorModeValue("black", "white")}
-          color={useColorModeValue("white", "black")}
-          minW={{ md: 40 }}
-          variant="solid"
-          _hover={{
-            borderWidth: "1px",
-            borderColor: useColorModeValue("black", "white"),
-            color: useColorModeValue("black", "white"),
-            bg: useColorModeValue("white", "black"),
-            transform: "scale(1.05)",
-            textDecoration: "none",
-          }}
-        >
+        <NextChakraLinkButton variant="solid" href="/contact" minW={{ md: 40 }}>
           Get in Touch
         </NextChakraLinkButton>
       </HStack>
@@ -77,4 +52,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Home;

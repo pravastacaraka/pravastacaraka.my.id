@@ -1,34 +1,33 @@
+"use client";
+
 import { ThemeToggle } from "@app-components/Button";
 import { _app_routes } from "@app-config/app.config";
-import { Container, HStack, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, HStack, useColorModeValue } from "@app-providers/chakra-ui";
 import { usePathname } from "next/navigation";
 import { NextChakraLinkButton } from "./NextChakraLink";
 
 function HeaderLink({ children, href }) {
-  const pathname = usePathname();
   let isActive = false;
+  const pathname = usePathname();
+  const linkColor = useColorModeValue("blue.600", "yellow.200");
 
   if (href !== "/") {
     const [, group] = href.split("/");
     isActive = pathname.includes(group);
-  } else {
-    if (href === pathname) isActive = true;
+  } else if (href === pathname) {
+    isActive = true;
   }
-
-  const { colorMode } = useColorMode();
-  const textColor = isActive ? (colorMode === "dark" ? "yellow.200" : "blue.600") : undefined;
 
   return (
     <NextChakraLinkButton
       href={href}
-      color={textColor}
-      fontWeight={isActive ? "bold" : "normal"}
       variant="ghost"
+      color={isActive && linkColor}
+      fontWeight={isActive ? "bold" : "normal"}
       _hover={{
         bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-        transform: "scale(1.05)",
-        textDecoration: "none",
       }}
+      aria-current={isActive ? "page" : undefined}
     >
       {children}
     </NextChakraLinkButton>
@@ -36,10 +35,11 @@ function HeaderLink({ children, href }) {
 }
 
 function Header() {
+  const contBgColor = useColorModeValue("whiteAlpha.700", "blackAlpha.700");
   return (
     <Container
       as="nav"
-      bg={useColorModeValue("rgba(255,255,255,0.6)", "rgba(0,0,0,0.6)")}
+      bg={contBgColor}
       backdropFilter="blur(12px)"
       display={{ base: "none", md: "block" }}
       position="sticky"
@@ -49,7 +49,7 @@ function Header() {
       zIndex={10}
     >
       <HStack justify="space-between" w="full">
-        <HStack></HStack>
+        <Box />
         <HStack>
           {_app_routes.map(({ title, href }) => (
             <HeaderLink key={title} href={href}>
@@ -57,7 +57,7 @@ function Header() {
             </HeaderLink>
           ))}
         </HStack>
-        <ThemeToggle />
+        <ThemeToggle isMobile={false} />
       </HStack>
     </Container>
   );

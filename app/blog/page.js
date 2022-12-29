@@ -9,8 +9,8 @@ function Page() {
       <Center
         h={{
           base: "calc(100vh - 30rem)",
-          xs: "calc(100vh - 30rem + 20px)",
-          sm: "calc(100vh - 30rem + 25px)",
+          xs: "calc(100vh - 30rem + 41px)",
+          sm: "calc(100vh - 30rem + 87px)",
           md: "calc(100vh - 30rem + 2px)",
         }}
       >

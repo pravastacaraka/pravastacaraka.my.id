@@ -25,7 +25,7 @@ const styles = {
       minW: "320px",
       color: mode("black", "white")(props),
       bg: mode("white", "black")(props),
-      transition: "none",
+      fontSize: { base: "sm", md: "md" },
       ...inter.style,
     },
   }),
@@ -54,7 +54,7 @@ const customTheme = extendTheme({
       baseStyle: (props) => ({
         color: mode("blue.600", "yellow.200")(props),
         fontWeight: "500",
-        borderBottom: "dotted",
+        borderBottom: { base: "1px dotted", lg: "2px dotted" },
         _hover: {
           textDecoration: "none",
           color: mode("blue.500", "yellow.100")(props),
@@ -63,7 +63,8 @@ const customTheme = extendTheme({
     },
     Text: {
       baseStyle: (props) => ({
-        color: mode("gray.600", "gray.400")(props),
+        color: mode("gray.700", "gray.200")(props),
+        lineHeight: "tall",
       }),
     },
   },

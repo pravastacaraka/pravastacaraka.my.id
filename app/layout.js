@@ -1,18 +1,14 @@
-"use client";
-
 import Footer from "@app-components/Footer";
 import Header from "@app-components/Header";
 import MobileNavigation from "@app-components/MobileNavigation";
-import { ChakraProvider, ColorModeScript, Container } from "@app-providers/chakra-ui";
-import customTheme from "@app-styles/theme";
-import { Analytics } from "@vercel/analytics/react";
+import { ChakraWrapper, Container } from "@app-providers/chakra-ui";
+import { Analytics } from "@app-providers/vercel";
 
 function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ChakraProvider theme={customTheme}>
-          <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
+        <ChakraWrapper>
           <Header />
           <Container as="main" display="grid" px={4} py={{ base: 4, md: 8 }}>
             {children}
@@ -20,7 +16,7 @@ function RootLayout({ children }) {
           </Container>
           <Footer />
           <MobileNavigation />
-        </ChakraProvider>
+        </ChakraWrapper>
       </body>
     </html>
   );
