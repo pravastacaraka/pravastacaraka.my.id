@@ -1,13 +1,15 @@
+"use client";
+
 import MobileMenuButton from "@app-components/mobile-menu/mobile-menu-button";
 import MobileMenuToggle from "@app-components/mobile-menu/mobile-menu-toggle";
-import { Box, Grid, useColorModeValue } from "@chakra-ui/react";
-import { motion, useCycle } from "framer-motion";
-import Link from "next/link";
+import { Box, Grid, useBoolean, useColorModeValue } from "@app-providers/chakra-ui";
+import { motion } from "framer-motion";
 import { HiHome } from "react-icons/hi";
 import { ThemeToggle } from "./Button";
+import { NextChakraLink } from "./NextChakraLink";
 
 function MobileNavigation() {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, toggleOpen] = useBoolean();
   const MotionBox = motion(Box);
 
   return (
@@ -29,12 +31,13 @@ function MobileNavigation() {
         borderTopWidth="2px"
         borderTopColor={useColorModeValue("gray.100", "gray.800")}
         shadow="0 -2px 10px 0 rgba(0, 0, 0, 0.035)"
+        minHeight="60px"
       >
-        <Link href="/" passHref>
+        <NextChakraLink href="/" borderBottomWidth="0px">
           <MobileMenuButton label="Home" icon={HiHome} />
-        </Link>
-        <MobileMenuToggle onClick={() => toggleOpen()} />
-        <ThemeToggle mobile />
+        </NextChakraLink>
+        <MobileMenuToggle onClick={toggleOpen} />
+        <ThemeToggle isMobile={true} />
       </Grid>
     </MotionBox>
   );
