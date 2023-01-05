@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
+    "dev": "next dev",
     "build": "next build",
     "build:static": "npm run build && next export",
     "postbuild": "next-sitemap --config config/sitemap.config.js",
-    "dev": "next dev",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint:fix": "npm run lint --fix",
     "start": "next start"
   },
   "dependencies": {
@@ -20,25 +20,25 @@
     "@plaiceholder/next": "2.5.0",
     "@vercel/analytics": "0.1.6",
     "airtable": "0.11.6",
-    "framer-motion": "8.0.2",
+    "framer-motion": "8.1.7",
     "next": "13.1.1",
     "plaiceholder": "2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "7.41.2",
+    "react-hook-form": "7.41.5",
     "react-icons": "4.7.1",
     "react-markdown": "8.0.4",
     "sharp": "0.31.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
-    "eslint": "8.30.0",
+    "@commitlint/cli": "17.4.0",
+    "@commitlint/config-conventional": "17.4.0",
+    "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "eslint-config-prettier": "8.5.0",
-    "husky": "8.0.2",
+    "eslint-config-prettier": "8.6.0",
+    "husky": "8.0.3",
     "lint-staged": "13.1.0",
-    "next-sitemap": "3.1.43",
+    "next-sitemap": "3.1.44",
     "prettier": "2.8.1"
   },
   "lint-staged": {
