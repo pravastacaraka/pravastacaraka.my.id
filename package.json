@@ -18,7 +18,7 @@
     "@emotion/styled": "11.10.5",
     "@next/font": "13.1.6",
     "@plaiceholder/next": "2.5.0",
-    "@vercel/analytics": "0.1.8",
+    "@vercel/analytics": "0.1.11",
     "airtable": "0.11.6",
     "framer-motion": "9.0.1",
     "next": "13.1.6",
