@@ -1,5 +1,11 @@
 import { Heading, Stack, Text } from "@app-providers/chakra-ui";
 
+/** @type {import("next").Metadata} */
+export const metadata = {
+  title: "Recent Projects",
+  description: `Here are some of my past works from personal projects and open source ones.`,
+};
+
 function ProjectsLayout({ children }) {
   return (
     <Stack as="section" spacing={8}>

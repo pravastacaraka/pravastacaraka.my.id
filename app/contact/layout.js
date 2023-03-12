@@ -1,5 +1,11 @@
 import { Flex, Heading, Stack, Text } from "@app-providers/chakra-ui";
 
+/** @type {import("next").Metadata} */
+export const metadata = {
+  title: "Get in Touch",
+  description: `Are you looking for a discussion partner or someone you can trust to help with your website?`,
+};
+
 function ContactLayout({ children }) {
   return (
     <Stack as="section" spacing={8}>

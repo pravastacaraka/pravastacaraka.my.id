@@ -1,27 +1,31 @@
 import { ProjectCard } from "@app-components/Card";
-import { Center, SimpleGrid, Stack, Text } from "@app-providers/chakra-ui";
+import { CustomReactMarkdown } from "@app-components/markdown";
+import { Center, SimpleGrid, Stack } from "@app-providers/chakra-ui";
 import { getPlaiceholder } from "plaiceholder";
 
+const BASE_URL = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}`;
+
 async function fetchProjectsData() {
-  const res = await fetch(
-    `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Recent%20Projects/listRecords`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
+  const headers = {
+    Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+    "Content-Type": "application/json",
+  };
+
+  const body = JSON.stringify({
+    sort: [
+      {
+        field: "id",
+        direction: "desc",
       },
-      body: JSON.stringify({
-        sort: [
-          {
-            field: "id",
-            direction: "desc",
-          },
-        ],
-      }),
-      next: { revalidate: 60 },
-    }
-  );
+    ],
+  });
+
+  const res = await fetch(`${BASE_URL}/Recent%20Projects/listRecords`, {
+    method: "POST",
+    headers,
+    body,
+    next: { revalidate: 60 },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -30,21 +34,33 @@ async function fetchProjectsData() {
   const json = await res.json();
 
   const records = await Promise.all(
-    json.records.map(async (record) => {
-      const { base64, img } = await getPlaiceholder(record.fields.images[0]?.url);
+    json?.records?.map(async (record) => {
+      if (!record?.fields || !record.fields.images[0]) {
+        return null;
+      }
+
+      let imgUrl = "/static/images/no-image.webp";
+      try {
+        imgUrl = new URL(record.fields.images[0].url).toString();
+      } catch (err) {
+        console.log("failed to get image url, err:", err);
+      }
+
+      const { base64, img } = await getPlaiceholder(imgUrl);
       record.fields.image = { src: img.src, type: img.type, blurDataURL: base64 };
       delete record.fields.images;
+
       return { id: record.id, ...record.fields };
-    })
-  ).then((values) => values);
+    }) || []
+  );
 
   return records;
 }
 
 async function Page() {
-  const projectsData = await fetchProjectsData();
+  const projects = await fetchProjectsData();
 
-  if (projectsData.length < 1) {
+  if (!projects || !Array.isArray(projects) || projects.length < 1) {
     return (
       <Center
         h={{
@@ -55,7 +71,7 @@ async function Page() {
         }}
         textAlign="center"
       >
-        <Text>Don&apos;t have any projects.</Text>
+        <CustomReactMarkdown>Don&apos;t have any projects.</CustomReactMarkdown>
       </Center>
     );
   }
@@ -63,7 +79,7 @@ async function Page() {
   return (
     <Stack spacing={4}>
       <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4}>
-        {projectsData.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </SimpleGrid>
