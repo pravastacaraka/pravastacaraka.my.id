@@ -2,8 +2,8 @@ import { Heading, Stack } from "@app-providers/chakra-ui";
 import Awards from "./Awards";
 import Licenses from "./Licenses";
 
-async function fetchAwardsData() {
-  const res = await fetch(`https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Awards`, {
+async function fetchData(url) {
+  const res = await fetch(url, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
@@ -24,31 +24,18 @@ async function fetchAwardsData() {
   return records;
 }
 
-async function fetchLicensesData() {
-  const res = await fetch(`https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Licenses`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
-    },
-    next: { revalidate: 60 },
-  });
+async function getAwardsData() {
+  const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Awards`;
+  return await fetchData(url);
+}
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const json = await res.json();
-
-  const records = json.records.map((record) => {
-    return { id: record.id, ...record.fields };
-  });
-
-  return records;
+async function getLicensesData() {
+  const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Licenses`;
+  return await fetchData(url);
 }
 
 async function Page() {
-  const awardsData = await fetchAwardsData();
-  const licensesData = await fetchLicensesData();
+  const [awardsData, licensesData] = await Promise.all([getAwardsData(), getLicensesData()]);
   return (
     <>
       <Stack spacing={4}>
