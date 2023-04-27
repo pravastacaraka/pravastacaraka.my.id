@@ -2,7 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { Inter } from "next/font/google";
 
-const inter = Inter();
+const inter = Inter({ subsets: ["latin"] });
 
 const breakpoints = {
   xs: "375px",
