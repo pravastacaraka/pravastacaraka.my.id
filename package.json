@@ -30,8 +30,8 @@
     "sharp": "0.32.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.1",
-    "@commitlint/config-conventional": "17.6.1",
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.2",
     "eslint-config-prettier": "8.8.0",
