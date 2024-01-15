@@ -1,11 +1,12 @@
 import Footer from "@app-components/Footer";
 import Header from "@app-components/Header";
 import MobileNavigation from "@app-components/MobileNavigation";
-import { _app_metadata } from "@app-config/app.config";
+import { _app_metadata, _app_viewport } from "@app-config/app.config";
 import { ChakraWrapper, Container } from "@app-providers/chakra-ui";
 import { Analytics } from "@app-providers/vercel";
 
 export const metadata = _app_metadata;
+export const viewport = _app_viewport;
 
 function RootLayout({ children }) {
   return (

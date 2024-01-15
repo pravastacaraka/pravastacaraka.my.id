@@ -21,4 +21,4 @@ Do you have questions or feedback? Then the reach out to me on [Email](mailto:he
 
 ## License
 
-[MIT License, Copyright (c) 2021 Pravasta Caraka Bramastagiri](https://github.com/pravastacaraka/pravastacaraka.my.id/blob/main/LICENSE)
+[MIT License, Copyright (c) 2024 Pravasta Caraka Bramastagiri](https://github.com/pravastacaraka/pravastacaraka.my.id/blob/main/LICENSE)
