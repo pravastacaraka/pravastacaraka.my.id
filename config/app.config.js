@@ -24,13 +24,18 @@ const _app_metadata = {
       },
     ],
   },
-  themeColor: "#ffffff",
   manifest: "/static/favicon/site.webmanifest",
   authors: {
     name: "Pravasta Caraka Bramastagiri",
     url: "https://pravastacaraka.my.id",
   },
 };
+
+/** @type {import("next").Viewport} */
+const _app_viewport = {
+  width: 1,
+  themeColor: "#ffffff",
+}
 
 const _app_routes = Object.freeze([
   {
@@ -55,4 +60,4 @@ const _app_routes = Object.freeze([
   },
 ]);
 
-module.exports = { _app_config, _app_metadata, _app_routes };
+module.exports = { _app_config, _app_metadata, _app_viewport, _app_routes };
