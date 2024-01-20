@@ -20,7 +20,7 @@
     "airtable": "0.12.2",
     "framer-motion": "10.18.0",
     "next": "^14.0.4",
-    "plaiceholder": "2.5.0",
+    "plaiceholder": "3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.3",
