@@ -4,7 +4,16 @@ const { withPlaiceholder } = require("@plaiceholder/next");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["dl.airtable.com", "v5.airtableusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dl.airtable.com",
+      },
+      {
+        protocol: "https",
+        hostname: "v5.airtableusercontent.com",
+      },
+    ],
   },
 };
 

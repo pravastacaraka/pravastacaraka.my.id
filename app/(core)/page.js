@@ -1,10 +1,10 @@
 import { NextChakraLink, NextChakraLinkButton } from "@app-components/NextChakraLink";
-import { Box, Center, Heading, HStack, Stack, Text } from "@app-providers/chakra-ui";
+import { Box, Center, HStack, Heading, Stack, Text } from "@app-providers/chakra-ui";
 import Image from "next/image";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
-import profilePic from "../public/static/images/avatar.webp";
+import profilePic from "../../public/static/images/avatar.webp";
 
-function Home() {
+function Page() {
   return (
     <Center
       as="section"
@@ -36,11 +36,11 @@ function Home() {
 
       <HStack justify="center" spacing={3}>
         <NextChakraLinkButton
+          href="/resume"
           variant="outline"
-          href="http://link.pravastacaraka.my.id/resume"
           minW={{ md: 40 }}
           rightIcon={<HiOutlineDocumentDownload />}
-          isExternal={true}
+          target="_blank"
         >
           My Resume
         </NextChakraLinkButton>
@@ -52,4 +52,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Page;
