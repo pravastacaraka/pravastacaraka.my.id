@@ -54,7 +54,7 @@ function ProjectCard({ project }) {
         transitionProperty="opacity"
         transitionTimingFunction="cubic-bezier(.39,.575,.565,1)"
       >
-        <Heading size={["sm", "md"]} color="white" noOfLines={2}>
+        <Heading size={{ lg: "md" }} color="white" noOfLines={2}>
           {project.name}
         </Heading>
         <Text fontSize={["xs", "sm"]} color="white" noOfLines={2}>

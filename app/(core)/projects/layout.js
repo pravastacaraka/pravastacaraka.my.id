@@ -1,6 +1,4 @@
 import { Heading, Stack, Text } from "@app-providers/chakra-ui";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 /** @type {import("next").Metadata} */
 export const metadata = {
@@ -15,7 +13,7 @@ function ProjectsLayout({ children }) {
         <Heading as="h1">Recent Projects</Heading>
         <Text as="h2">Here are some of my past works from personal projects and open source ones.</Text>
       </Stack>
-      <Suspense fallback={<Loading />}>{children}</Suspense>
+      {children}
     </Stack>
   );
 }
