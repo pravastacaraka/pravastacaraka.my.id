@@ -42,37 +42,29 @@ function ProjectCard({ project }) {
       <Stack
         _groupHover={{ opacity: 1 }}
         align="center"
-        bgColor="blackAlpha.700"
+        bgColor="blackAlpha.800"
         inset={0}
         justify="center"
         opacity={0}
         pos="absolute"
         px={8}
         py={4}
+        textAlign="center"
         transitionDuration="normal"
         transitionProperty="opacity"
         transitionTimingFunction="cubic-bezier(.39,.575,.565,1)"
       >
-        <Heading size="md" color="white">
+        <Heading size={["sm", "md"]} color="white" noOfLines={2}>
           {project.name}
         </Heading>
-        <Text color="white" fontSize={["xs", "sm"]} noOfLines={2} textAlign="center">
+        <Text fontSize={["xs", "sm"]} color="white" noOfLines={2}>
           {project.desc}
         </Text>
-        <LinkOverlay
-          href={project.demo_url}
-          color="yellow.200"
-          fontSize={["xs", "sm"]}
-          noOfLines={1}
-          pb={4}
-          isExternal
-        >
-          {project.demo_url?.replace(/https?:\/\//, "")}
-        </LinkOverlay>
-        <Wrap justify="center">
+        {project.demo_url && <LinkOverlay href={project.demo_url} isExternal />}
+        <Wrap display={["none", "block"]} justify="center">
           {project.stack.map((st) => (
             <WrapItem key={st}>
-              <Tag size="sm" variant="subtle">
+              <Tag size={["xs", "sm"]} variant="subtle">
                 {st}
               </Tag>
             </WrapItem>

@@ -51,31 +51,13 @@ async function fetchProjectsData() {
       delete record.fields.images;
 
       return { id: record.id, ...record.fields };
-    }) || []
+    }) || [],
   );
 
   return records;
 }
 
-async function Page() {
-  const projects = await fetchProjectsData();
-
-  if (!projects || !Array.isArray(projects) || projects.length < 1) {
-    return (
-      <Center
-        h={{
-          base: "calc(100vh - 30rem)",
-          xs: "calc(100vh - 30rem + 41px)",
-          sm: "calc(100vh - 30rem + 87px)",
-          md: "calc(100vh - 30rem + 2px)",
-        }}
-        textAlign="center"
-      >
-        <CustomReactMarkdown>Don&apos;t have any projects.</CustomReactMarkdown>
-      </Center>
-    );
-  }
-
+function ProjectList({ projects }) {
   return (
     <Stack spacing={4}>
       <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4}>
@@ -85,6 +67,28 @@ async function Page() {
       </SimpleGrid>
     </Stack>
   );
+}
+
+async function Page() {
+  const projects = await fetchProjectsData();
+
+  if (!projects || projects.length === 0) {
+    return (
+      <Center
+        h={{
+          base: "calc(100vh - 30rem)",
+          xs: "calc(100vh - 30rem + 35px)",
+          sm: "calc(100vh - 30rem + 81px)",
+          md: "calc(100vh - 30rem - 4px)",
+        }}
+        textAlign="center"
+      >
+        <CustomReactMarkdown>Don&apos;t have any projects.</CustomReactMarkdown>
+      </Center>
+    );
+  }
+
+  return <ProjectList projects={projects} />;
 }
 
 export default Page;
