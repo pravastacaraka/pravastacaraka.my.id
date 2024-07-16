@@ -2,16 +2,26 @@
 
 import { Button } from "@app-components/Button";
 import { NextChakraLink } from "@app-components/NextChakraLink";
-import { arrayGroupBy } from "@app-helper/function.helper";
-import { Divider, Flex, Heading, Icon, List, ListItem, Stack, Text } from "@app-providers/chakra-ui";
-import { useBoolean, useColorModeValue } from "@chakra-ui/react";
+import {
+  Divider,
+  Flex,
+  Heading,
+  Icon,
+  List,
+  ListItem,
+  Stack,
+  Text,
+  useBoolean,
+  useColorModeValue,
+} from "@app-providers/chakra-ui";
+import { arrayGroupBy } from "@app-utils/array";
 import { HiOutlineBadgeCheck, HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 function Licenses({ data = [] }) {
   const [showLicenses, setShowLicenses] = useBoolean();
   const iconColor = useColorModeValue("blue.600", "yellow.200");
 
-  if (!data || !Array.isArray(data) || data.length < 1) {
+  if (!data || data.length < 1) {
     return <Text>Don&apos;t have any certifications.</Text>;
   }
 
@@ -70,13 +80,13 @@ function Licenses({ data = [] }) {
                     })}
                   </List>
                   {showDivider && Object.keys(licensesGroupedByYear).length - 1 !== acc.idx && <Divider mb={4} />}
-                </Stack>
+                </Stack>,
               );
 
               acc.idx++;
               return acc;
             },
-            { countLicense: 0, listItems: [], idx: 0 }
+            { countLicense: 0, listItems: [], idx: 0 },
           ).listItems
       }
       <Button

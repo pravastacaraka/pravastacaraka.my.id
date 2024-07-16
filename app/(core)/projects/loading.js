@@ -1,4 +1,4 @@
-import { AspectRatio, SimpleGrid, Skeleton, Stack } from "@chakra-ui/react";
+import { AspectRatio, SimpleGrid, Skeleton, Stack } from "@app-providers/chakra-ui";
 
 const Loading = () => {
   return (

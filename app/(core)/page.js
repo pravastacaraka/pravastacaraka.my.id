@@ -2,7 +2,7 @@ import { NextChakraLink, NextChakraLinkButton } from "@app-components/NextChakra
 import { Box, Center, HStack, Heading, Stack, Text } from "@app-providers/chakra-ui";
 import Image from "next/image";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
-import profilePic from "../../public/static/images/avatar.webp";
+import profilePic from "../../public/assets/images/avatar.webp";
 
 function Page() {
   return (

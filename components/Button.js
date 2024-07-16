@@ -1,7 +1,12 @@
 "use client";
 
-import { Button as ChakraButton, Icon, IconButton } from "@app-providers/chakra-ui";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
+import {
+  Button as ChakraButton,
+  Icon,
+  IconButton,
+  useColorMode,
+  useColorModeValue,
+} from "@app-providers/chakra-ui";
 import { HiMoon, HiSun } from "react-icons/hi";
 import MobileMenuButton from "./mobile-menu/mobile-menu-button";
 
@@ -96,4 +101,4 @@ function Button({ children, variant, ...restProps }) {
   }
 }
 
-export { ThemeToggle, Button };
+export { Button, ThemeToggle };

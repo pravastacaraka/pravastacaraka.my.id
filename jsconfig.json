@@ -7,7 +7,7 @@
       "@app-pages/*": ["pages/*"],
       "@app-libs/*": ["libs/*"],
       "@app-styles/*": ["styles/*"],
-      "@app-helper/*": ["helper/*"],
+      "@app-utils/*": ["utils/*"],
       "@app-providers/*": ["providers/*"]
     }
   },

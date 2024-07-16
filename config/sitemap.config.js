@@ -1,10 +1,9 @@
-const { _app_config } = require("./app.config");
-
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+const cfg = {
   changefreq: "daily",
   priority: 0.7,
-  siteUrl: _app_config.siteUrl,
+  siteUrl: `https://${process.env.NEXT_PUBLIC_SITE_URL}`,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
 };
+export default cfg;

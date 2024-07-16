@@ -6,6 +6,20 @@ import { getPlaiceholder } from "plaiceholder";
 
 const BASE_URL = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}`;
 
+async function getImage(src) {
+  const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
+
+  const {
+    base64,
+    metadata: { format },
+  } = await getPlaiceholder(buffer, { size: 10 });
+
+  return {
+    base64,
+    img: { src, format },
+  };
+}
+
 async function fetchAboutData() {
   const res = await fetch(`${BASE_URL}/About%20Me`, {
     method: "GET",
@@ -27,19 +41,19 @@ async function fetchAboutData() {
         return null;
       }
 
-      let imgUrl = "/static/images/no-image.webp";
+      let imgUrl = "/assets/images/no-image.webp";
       try {
         imgUrl = new URL(record.fields.cover_im[0].url).toString();
       } catch (err) {
         console.log("failed to get image url, err:", err);
       }
 
-      const { base64, img } = await getPlaiceholder(imgUrl);
-      record.fields.about_img = { src: img.src, type: img.type, blurDataURL: base64 };
+      const { base64, img } = await getImage(imgUrl);
+      record.fields.about_img = { src: img.src, type: img.format, blurDataURL: base64 };
       delete record.fields.cover_im;
 
       return { id: record.id, ...record.fields };
-    }) || []
+    }) || [],
   );
 
   return record;
@@ -63,7 +77,7 @@ async function fetchKnowledgeData() {
   const records = await Promise.all(
     json?.records?.map((record) => {
       return { id: record.id, ...record.fields };
-    }) || []
+    }) || [],
   );
 
   return records;

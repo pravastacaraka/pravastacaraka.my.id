@@ -7,6 +7,20 @@ import Loading from "./loading";
 
 const BASE_URL = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}`;
 
+async function getImage(src) {
+  const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
+
+  const {
+    base64,
+    metadata: { format },
+  } = await getPlaiceholder(buffer, { size: 10 });
+
+  return {
+    base64,
+    img: { src, format },
+  };
+}
+
 async function getData() {
   const headers = {
     Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
@@ -41,15 +55,15 @@ async function getData() {
         return null;
       }
 
-      let imgUrl = "/static/images/no-image.webp";
+      let imgUrl = "/assets/images/no-image.webp";
       try {
         imgUrl = new URL(record.fields.images[0].url).toString();
       } catch (err) {
         console.log("failed to get image url, err:", err);
       }
 
-      const { base64, img } = await getPlaiceholder(imgUrl);
-      record.fields.image = { src: img.src, type: img.type, blurDataURL: base64 };
+      const { base64, img } = await getImage(imgUrl);
+      record.fields.image = { src: img.src, type: img.format, blurDataURL: base64 };
       delete record.fields.images;
 
       return { id: record.id, ...record.fields };

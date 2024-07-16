@@ -1,7 +1,7 @@
 "use client";
 
 import { NextChakraLinkButton } from "@app-components/NextChakraLink";
-import { useColorModeValue } from "@chakra-ui/react";
+import { useColorModeValue } from "@app-providers/chakra-ui";
 import { usePathname } from "next/navigation";
 
 function MobileMenuItem({ children, href }) {
