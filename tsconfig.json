@@ -23,6 +23,7 @@
     "paths": {
       "components/*": ["./src/components/*"],
       "config/*": ["./config/*"],
+      "domain/*": ["./src/domain/*"],
       "styles/*": ["./src/styles/*"],
       "utils/*": ["./src/utils/*"],
       "ui/*": ["./src/ui/*"]
