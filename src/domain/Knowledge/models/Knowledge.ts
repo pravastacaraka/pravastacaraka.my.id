@@ -1,12 +1,12 @@
-export type KnowledgeData = {
+export type Knowledge = {
   id: string;
   name: string;
   icon: string;
   type: string;
 };
 
-export type KnowledgeDataMap = {
-  [knowledgeType: string]: KnowledgeData[];
+export type KnowledgeMap = {
+  [knowledgeType: string]: Knowledge[];
 };
 
-export type APIResponseKnowledgeData = KnowledgeData & {};
+export type APIResponseKnowledge = Knowledge & {};

@@ -1,14 +1,14 @@
 import { fetchKnowledgeAPI } from "domain/Knowledge/api/KnowledgeAPI";
-import { KnowledgeDataMap } from "domain/Knowledge/models/Knowledge";
+import { KnowledgeMap } from "domain/Knowledge/models/Knowledge";
 
-export async function getKnowledges(): Promise<KnowledgeDataMap | null> {
+export async function getKnowledges(): Promise<KnowledgeMap | null> {
   const data = await fetchKnowledgeAPI();
 
   if (!data?.records || data.records.length < 1) {
     return null;
   }
 
-  const knowledgeData: KnowledgeDataMap = data.records.reduce((acc, record) => {
+  const result: KnowledgeMap = data.records.reduce((acc, record) => {
     const type = record.fields.type;
 
     if (!acc[type]) {
@@ -18,7 +18,7 @@ export async function getKnowledges(): Promise<KnowledgeDataMap | null> {
     acc[type].push({ ...record.fields, id: record.id });
 
     return acc;
-  }, {} as KnowledgeDataMap);
+  }, {} as KnowledgeMap);
 
-  return knowledgeData;
+  return result;
 }

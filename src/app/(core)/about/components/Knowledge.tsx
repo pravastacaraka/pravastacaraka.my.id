@@ -1,7 +1,7 @@
-import { Center, SimpleGrid } from "@chakra-ui/react";
 import { getKnowledges } from "domain/Knowledge/useCases/getKnowledges";
 import KnowledgeCard from "ui/common/components/card/Knowledge/KnowledgeCard";
 import { CustomReactMarkdown } from "ui/common/components/markdown/Markdown";
+import { Center, SimpleGrid } from "ui/common/providers/theme.provider";
 
 const Knowledge = async () => {
   const data = await getKnowledges();

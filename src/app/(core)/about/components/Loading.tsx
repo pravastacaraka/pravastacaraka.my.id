@@ -11,7 +11,7 @@ import {
   Text,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react";
+} from "ui/common/providers/theme.provider";
 
 export const AboutLoading = () => {
   return (
