@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon, IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { HiMoon, HiSun } from "react-icons/hi";
+import { Icon, IconButton, useColorMode, useColorModeValue } from "ui/common/providers/theme.provider";
 import MobileMenuButton from "../../layout/MobileMenu/MobileMenuButton";
 
 type Props = {

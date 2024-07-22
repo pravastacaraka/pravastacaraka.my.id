@@ -1,15 +1,9 @@
+import type { Knowledge } from "domain/Knowledge/models/Knowledge";
 import { Box, Heading, HStack, Icon, Text, Wrap, WrapItem } from "ui/common/providers/theme.provider";
 import { CustomReactMarkdown } from "../../markdown/Markdown";
 
-type KnowledgeData = {
-  id: string;
-  name: string;
-  icon: string;
-  type: string;
-};
-
 type Props = {
-  data: KnowledgeData[] | null;
+  data: Knowledge[];
   label: string;
 };
 

@@ -1,10 +1,12 @@
-import { APIResponseAbout } from "domain/About/models/About";
+import { APIResponseProject } from "domain/Project/models/Project";
 import { AIRTABLE_API_URL } from "domain/shared/api/constant";
 import { APIResponse } from "domain/shared/models/ApiResponse";
 
-export async function fetchAboutAPI(): Promise<APIResponse<APIResponseAbout> | null> {
+export async function fetchProjectAPI(): Promise<APIResponse<APIResponseProject> | null> {
   try {
-    const res = await fetch(`${AIRTABLE_API_URL}/About%20Me`, {
+    const sortBy = "?sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=desc";
+
+    const res = await fetch(`${AIRTABLE_API_URL}/Recent%20Projects${sortBy}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
@@ -18,7 +20,7 @@ export async function fetchAboutAPI(): Promise<APIResponse<APIResponseAbout> | n
 
     return await res.json();
   } catch (error) {
-    console.error("Error fetching about data, err:", error);
+    console.error("Error fetching project data, err:", error);
     return null;
   }
 }

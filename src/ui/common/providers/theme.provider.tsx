@@ -47,6 +47,7 @@ export {
   Select,
   SimpleGrid,
   Skeleton,
+  SkeletonText,
   Stack,
   Tag,
   Text,

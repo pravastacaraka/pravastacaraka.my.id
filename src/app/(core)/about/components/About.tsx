@@ -1,7 +1,7 @@
-import { AspectRatio, Center } from "@chakra-ui/react";
 import { getAbout } from "domain/About/useCases/getAbout";
 import Image from "next/image";
 import { CustomReactMarkdown } from "ui/common/components/markdown/Markdown";
+import { AspectRatio, Center } from "ui/common/providers/theme.provider";
 
 const About = async () => {
   const data = await getAbout();
@@ -31,11 +31,6 @@ const About = async () => {
       </Center>
 
       <CustomReactMarkdown>{data.long_desc}</CustomReactMarkdown>
-
-      <CustomReactMarkdown>
-        You can reach out via email at [hello@pravastacaraka.my.id](mailto:hello@pravastacaraka.my.id), or via
-        socials on the footer.
-      </CustomReactMarkdown>
     </>
   );
 };

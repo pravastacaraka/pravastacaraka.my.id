@@ -1,7 +1,7 @@
 import { Suspense } from "react";
+import About from "./components/About";
 import Knowledge from "./components/Knowledge";
 import { AboutLoading, KnowledgeLoading } from "./components/Loading";
-import About from "./components/About";
 
 function Page() {
   return (
@@ -13,9 +13,6 @@ function Page() {
       <Suspense fallback={<KnowledgeLoading />}>
         <Knowledge />
       </Suspense>
-
-      {/* <AboutLoading />
-      <KnowledgeLoading /> */}
     </>
   );
 }
