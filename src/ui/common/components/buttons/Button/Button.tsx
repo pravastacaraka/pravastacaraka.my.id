@@ -3,10 +3,11 @@
 import { type LinkProps } from "next/link";
 import { type ButtonProps, Button as ChakraButton, useColorModeValue } from "ui/common/providers/theme.provider";
 
-type Props = ButtonProps &
-  LinkProps & {
-    [x: string]: any;
-  };
+type Props =
+  | (ButtonProps & LinkProps)
+  | {
+      [x: string]: any;
+    };
 
 export const Button = ({ children, variant, ...restProps }: Props) => {
   const blackWhite = useColorModeValue("black", "white");

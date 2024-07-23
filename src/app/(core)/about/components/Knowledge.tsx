@@ -15,7 +15,7 @@ const Knowledge = async () => {
   }
 
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} rowGap={8} columnGap={2} w="full" py={4}>
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} rowGap={8} columnGap={2} mt={8}>
       <KnowledgeCard data={data["language"]} label="Languages" />
       <KnowledgeCard data={data["framework"]} label="Frameworks" />
       <KnowledgeCard data={data["database"]} label="Databases" />

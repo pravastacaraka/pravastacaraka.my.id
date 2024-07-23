@@ -1,11 +1,8 @@
-import { Box } from "ui/common/providers/theme.provider";
-
 function Page() {
   return (
-    <Box
-      as="iframe"
-      width="full"
-      height="100vh"
+    <iframe
+      width="100%"
+      height="100%"
       src="https://drive.google.com/file/d/1LzMd4Sq3Rg5Em3rZVmNWgHG8Nrw8_wBO/preview"
     />
   );

@@ -1,7 +1,7 @@
 import { getAbout } from "domain/About/useCases/getAbout";
 import Image from "next/image";
 import { CustomReactMarkdown } from "ui/common/components/markdown/Markdown";
-import { AspectRatio, Center } from "ui/common/providers/theme.provider";
+import { AspectRatio, Center, VStack } from "ui/common/providers/theme.provider";
 
 const About = async () => {
   const data = await getAbout();
@@ -30,7 +30,9 @@ const About = async () => {
         </AspectRatio>
       </Center>
 
-      <CustomReactMarkdown>{data.long_desc}</CustomReactMarkdown>
+      <VStack spacing={4} textAlign="justify">
+        <CustomReactMarkdown>{data.long_desc}</CustomReactMarkdown>
+      </VStack>
     </>
   );
 };

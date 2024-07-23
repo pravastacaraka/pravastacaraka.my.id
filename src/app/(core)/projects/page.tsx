@@ -4,11 +4,9 @@ import ProjectList from "./components/ProjectList";
 
 function Page() {
   return (
-    <>
-      <Suspense fallback={<ProjectLoading />}>
-        <ProjectList />
-      </Suspense>
-    </>
+    <Suspense fallback={<ProjectLoading />}>
+      <ProjectList />
+    </Suspense>
   );
 }
 

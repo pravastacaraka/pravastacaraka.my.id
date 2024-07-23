@@ -22,19 +22,18 @@ export const AboutLoading = () => {
         </AspectRatio>
       </Center>
 
-      <SkeletonText noOfLines={2} skeletonHeight="22px" />
-      <SkeletonText noOfLines={3} skeletonHeight="22px" />
-      <SkeletonText noOfLines={3} skeletonHeight="22px" />
-      <SkeletonText noOfLines={3} skeletonHeight="22px" />
-      <SkeletonText noOfLines={2} skeletonHeight="22px" />
       <SkeletonText noOfLines={1} skeletonHeight="22px" />
+      <SkeletonText noOfLines={3} skeletonHeight="22px" />
+      <SkeletonText noOfLines={3} skeletonHeight="22px" />
+      <SkeletonText noOfLines={3} skeletonHeight="22px" />
+      <SkeletonText noOfLines={2} skeletonHeight="22px" />
     </>
   );
 };
 
 export const KnowledgeLoading = () => {
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} rowGap={8} columnGap={2} w="full" py={4}>
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} rowGap={8} columnGap={2} mt={8}>
       {Array.from({ length: 6 }).map((_, index) => (
         <Box key={index}>
           <Heading mb={4} size="md" letterSpacing="tighter" fontWeight="600">

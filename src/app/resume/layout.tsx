@@ -10,7 +10,7 @@ function ResumeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div>{children}</div>;
+  return <main style={{ height: "100vh" }}>{children}</main>;
 }
 
 export default ResumeLayout;
