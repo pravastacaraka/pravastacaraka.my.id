@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-export default function robots(): MetadataRoute.Robots {
+function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
@@ -10,3 +10,5 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`,
   };
 }
+
+export default robots;
