@@ -1,7 +1,7 @@
 import { Link } from "ui/common/components/links/Link/Link";
 import { Center, Heading } from "ui/common/providers/theme.provider";
 
-export default function NotFound() {
+function NotFound() {
   return (
     <Center as="main" textAlign="center" flexDir="column" height="100vh">
       <Heading as="h1" size="xl" maxWidth="lg">
@@ -13,3 +13,5 @@ export default function NotFound() {
     </Center>
   );
 }
+
+export default NotFound;
